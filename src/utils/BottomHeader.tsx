@@ -15,7 +15,6 @@ export default BottomHeader
 
 const BarraNavegador = styled.nav`
   display: flex;
-  font-family: Arial, sans-serif;
   justify-content:space-evenly;
   background-color: #023e8a;
   padding: 0.75rem;
