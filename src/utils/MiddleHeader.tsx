@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { ShoppingCart, User, MagnifyingGlass } from "@phosphor-icons/react"
 import { Input } from "@/components/ui/input"
 import logo from "@/assets/logo_loja.jpg"
+import { Link } from "react-router-dom"
 
 
 const MiddleHeader = () => {
@@ -9,9 +10,9 @@ const MiddleHeader = () => {
 
     <Header>
         <LogoLoja>
-          <a href="/">
+          <Link to="/">
             <img src={logo} alt="Logo" />
-          </a>
+          </Link>
         </LogoLoja>
 
         <BarraPesquisa>
@@ -50,7 +51,6 @@ const Header = styled.div`
   align-items: center;
   background: white;
   flex-wrap: wrap;
-  box-sizing: border-box;
 `
 
 const LogoLoja = styled.button`
@@ -86,7 +86,7 @@ const StyledInput = styled(Input)`
 const IconePesquisa = styled.button`
   position: absolute;
   top: 50%;
-  right: 0rem;
+  right: 1rem;
   transform: translateY(-50%);
   color: #555;
   background: none;

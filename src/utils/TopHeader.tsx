@@ -45,10 +45,8 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  font-family: Arial, sans-serif;
   background-color: #023e8a;
   color: white;
-  box-sizing: border-box;
 `
 
 const LeftSection = styled.div`
