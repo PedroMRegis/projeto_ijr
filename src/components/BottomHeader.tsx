@@ -1,12 +1,13 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 const BottomHeader = () => {
   return (
     <BarraNavegador>
-      <Item href="/orcamento">Orçamento</Item>
-      <Item href="/suprimentos">Suprimentos</Item>
-      <Item href="/moveis">Móveis</Item>
-      <Item href="/eletronicos">Eletrônicos</Item>
+      <Item to="/orcamento">Orçamento</Item>
+      <Item to="/suprimentos">Suprimentos</Item>
+      <Item to="/moveis">Móveis</Item>
+      <Item to="/eletronicos">Eletrônicos</Item>
     </BarraNavegador>
   )
 }
@@ -21,7 +22,7 @@ const BarraNavegador = styled.nav`
   gap: 3rem;
   `
 
-  const Item = styled.a`
+  const Item = styled(Link)`
   font-size: 0.9rem;
   color: white;
   text-decoration: none;

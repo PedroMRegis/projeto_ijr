@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from "styled-components"
 import {BrowserRouter} from 'react-router-dom'
-import TopHeader from './utils/TopHeader'
-import MiddleHeader from '@/utils/MiddleHeader'
-import BottomHeader from '@/utils/BottomHeader'
+import TopHeader from './components/TopHeader'
+import MiddleHeader from '@/components/MiddleHeader'
+import BottomHeader from '@/components/BottomHeader'
 import RoutesConfig from "@/Routes/routes"
 
 

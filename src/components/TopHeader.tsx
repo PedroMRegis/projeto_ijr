@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { WhatsappLogo, Phone } from "@phosphor-icons/react"
+import { Link } from "react-router-dom"
 
 const TopHeader = () => {
   return (
@@ -29,8 +30,8 @@ const TopHeader = () => {
         </LeftSection>
 
         <RightSection>
-          <LinkItem href="nossa-loja">Nossa loja</LinkItem>
-          <LinkItem href="atendimento">Atendimento</LinkItem>
+          <LinkItem to="nossa-loja">Nossa loja</LinkItem>
+          <LinkItem to="atendimento">Atendimento</LinkItem>
         </RightSection>
     </Header>
   )
@@ -77,7 +78,7 @@ const Divisor = styled.div`
   background-color: white;
 `
 
-const LinkItem = styled.a`
+const LinkItem = styled(Link)`
   font-size: 0.8rem;
   color: white;
   text-decoration: none;
