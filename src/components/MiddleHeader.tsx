@@ -23,16 +23,16 @@ const MiddleHeader = () => {
         </BarraPesquisa>
 
         <Icones>
-          <a href="/carrinho">
+          <Link to="/carrinho">
             <button>
               <ShoppingCart size={32} weight="regular" />
             </button>
-          </a>
-          <a href="/login">
+          </Link>
+          <Link to="/login">
             <button>
               <User size={32} weight="regular" />
             </button>
-          </a>
+          </Link>
         </Icones>
     </Header>
 
