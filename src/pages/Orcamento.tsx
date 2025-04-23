@@ -1,12 +1,11 @@
-// src/pages/Orcamento.tsx
 import styled from "styled-components"
 import CardProduto from "@/components/CardProduto"
 import imgKit1 from "@/assets/Kit1.png"
 import imgKit2 from "@/assets/Kit2.png"
 import imgKit3 from "@/assets/Kit3.png"
-import imgformaspagamento from "@/assets/pagamento.png" // footer
-import comprasegura from "@/assets/comprasegura.png" // footer
-import imgorcamento from "@/assets/imgprincipalorcamento.png" 
+import imgformaspagamento from "@/assets/pagamento.png"
+import comprasegura from "@/assets/comprasegura.png"
+import imgorcamento from "@/assets/imgprincipalorcamento.png"
 
 const Orcamento = () => {
   return (
@@ -51,7 +50,9 @@ const Orcamento = () => {
         <Pagamentos>
           <img src={imgformaspagamento} alt="Formas de pagamento" />
         </Pagamentos>
-        <Endereco>R. Teodoro Sampaio - Pinheiros, São Paulo - SP, 04551-000</Endereco>
+        <Endereco>
+          R. Teodoro Sampaio - Pinheiros, São Paulo - SP, 04551-000
+        </Endereco>
       </Rodape>
     </Container>
   )
@@ -59,24 +60,24 @@ const Orcamento = () => {
 
 export default Orcamento
 
+// ======================= Styled Components =======================
+
 const Container = styled.div`
   width: 100%;
-  border: 5px solid black;
 `
 
 const Banner = styled.div`
   position: relative;
+
   img {
     width: 100%;
     height: 600px;
     object-fit: cover;
   }
-  border: 5px solid red;
 `
 
 const Chamada = styled.div`
   position: absolute;
-  height: 200px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -84,8 +85,6 @@ const Chamada = styled.div`
   font-size: 3.5rem;
   color: white;
   background-color: rgba(0, 0, 0, 0);
-  padding-bottom: 1rem 2rem;
-  border-radius: 1rem;
 `
 
 const Titulo = styled.h2`
@@ -126,4 +125,3 @@ const Endereco = styled.p`
   font-size: 0.75rem;
   margin-top: 1rem;
 `
-
