@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 import CardProduto from "@/components/CardProduto"
 import imgKit1 from "@/assets/Kit1.png"
 import imgKit2 from "@/assets/Kit2.png"
@@ -11,14 +12,17 @@ const Orcamento = () => {
   return (
     <Container>
       <Banner>
-        <img src={imgorcamento} alt="Sala de Reunião" />
-        <Chamada>
-          Realize seu orçamento agora: <br />
-          <strong>(11) 99999-9999</strong>
-        </Chamada>
+        <Conteudo>
+          <TituloBanner>Solicite seu orçamento agora</TituloBanner>
+          <TextoBanner>Equipe especializada pronta pra atender você!</TextoBanner>
+          <Telefone><strong>(11) 99999-9999</strong></Telefone>
+          <BotaoWhatsapp href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer">
+            Converse conosco via WhatsApp
+          </BotaoWhatsapp>
+        </Conteudo>
       </Banner>
 
-      <Titulo>Conheça nossos kits e personalize do seu jeito :</Titulo>
+      <Titulo>Conheça nossos kits e personalize do seu jeito:</Titulo>
 
       <GridCards>
         <CardProduto
@@ -43,8 +47,8 @@ const Orcamento = () => {
 
       <Rodape>
         <Contato>
-          <p>Contato via WhatsApp: (11)99999-9999</p>
-          <p>Televendas: (11)0000-0000</p>
+          <p>Contato via WhatsApp: (11) 99999-9999</p>
+          <p>Televendas: (11) 0000-0000</p>
           <p>Email: ramaraloffice@gmail.com</p>
         </Contato>
         <Pagamentos>
@@ -66,25 +70,61 @@ const Container = styled.div`
   width: 100%;
 `
 
-const Banner = styled.div`
+const Banner = styled.section`
+  background-image: url(${imgorcamento});
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+`
 
-  img {
-    width: 100%;
-    height: 600px;
-    object-fit: cover;
+const Conteudo = styled.div`
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  border-radius: 0.5rem;
+`
+
+const TituloBanner = styled.h1`
+  font-size: 3rem;
+  font-weight: bold;
+`
+
+const TextoBanner = styled.h2`
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1rem 0;
+`
+
+const Telefone = styled.p`
+  font-size: 1.25rem;
+  margin-top: 1rem;
+
+  strong {
+    font-size: 1.5rem;
   }
 `
 
-const Chamada = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  font-size: 3.5rem;
+const BotaoWhatsapp = styled.a`
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 2rem;
+  border: 2px solid white;
+  border-radius: 4px;
   color: white;
-  background-color: rgba(0, 0, 0, 0);
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+
+  &:hover {
+    background-color: white;
+    color: #023e8a;
+  }
 `
 
 const Titulo = styled.h2`
