@@ -3,17 +3,17 @@ import styled from "styled-components"
 type CardProdutoProps = {
   imagem: string
   nome: string
-  precoDe: string
+  precoDe?: string
   precoPor: string
-  // tipo:
+  tipo: string
 }
 
-const CardProduto = ({ imagem, nome, precoDe, precoPor }: CardProdutoProps) => {
+const CardProduto = ({ imagem, nome, precoDe, precoPor,tipo }: CardProdutoProps) => {
   return (
     <Card>
       <Imagem src={imagem} alt={nome} />
       <Titulo>{nome}</Titulo>
-      <PrecoAntigo>De: R$ {precoDe}</PrecoAntigo>
+      {precoDe && <PrecoAntigo>De: R$ {precoDe}</PrecoAntigo>}
       <PrecoNovo>Por: R$ {precoPor} à vista</PrecoNovo>
       <Botao>Mais Detalhes</Botao>
     </Card>
@@ -23,14 +23,14 @@ const CardProduto = ({ imagem, nome, precoDe, precoPor }: CardProdutoProps) => {
 export default CardProduto
 
 const Card = styled.div`
-  background: #white;
+  background: #fff;
   border-radius: 0.75rem;
   box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 15rem;
+  max-width: 13rem;
   width: 100%;
 `
 

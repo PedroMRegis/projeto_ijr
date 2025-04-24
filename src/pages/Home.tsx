@@ -8,15 +8,13 @@ import monitor from "@/assets/monitor_lg.png"
 import teclado from "@/assets/teclado.png"
 import impressora from "@/assets/impressora_laser.png"
 import desktop from "@/assets/Desktop.png"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel"
+import produtos from "@/data/produtos"
+import { FiltroProduto } from "@/utils/FiltroProduto"
 
 
 
 const Home = () => {
+  const { filtro, setFiltro, produtosFiltrados } = FiltroProduto(produtos)
   return (
     <>
       <Container>
@@ -29,17 +27,29 @@ const Home = () => {
       </Container>
 
       <Section>
-        <SectionTitulo>Favoritos em Eletrônicos</SectionTitulo>
-        <Carousel>
-          <CarouselContent style={{ display: 'flex', flexDirection: 'row', gap: '1.5rem' }}>
-          <CarouselItem><CardProduto imagem={mouse} nome="Mouse HP USB" precoDe="89,00" precoPor="36,99" /></CarouselItem>
-            <CarouselItem><CardProduto imagem={telefone} nome="Telefone IP Yealink T30" precoDe="299,00" precoPor="253,90" /></CarouselItem>
-            <CarouselItem><CardProduto imagem={monitor} nome="Monitor LG 22\" precoDe="899,00" precoPor="759,00" /></CarouselItem>
-            <CarouselItem><CardProduto imagem={teclado} nome="Teclado Logitech USB" precoDe="129,00" precoPor="89,90" /></CarouselItem>
-            <CarouselItem><CardProduto imagem={impressora} nome="Impressora HP Laser" precoDe="999,00" precoPor="830,00" /></CarouselItem>
-            <CarouselItem><CardProduto imagem={desktop} nome="Computador Desktop" precoDe="899,00" precoPor="799,00" /></CarouselItem>
-          </CarouselContent>
-        </Carousel>
+        <Filtros>
+          <button onClick={() => setFiltro("todos")}>Todos</button>
+          <button onClick={() => setFiltro("eletronicos")}>Eletrônicos</button>
+          <button onClick={() => setFiltro("moveis")}>Móveis</button>
+          <button onClick={() => setFiltro("suprimentos")}>Suprimentos</button>
+        </Filtros>
+
+        <AreaProdutos>
+          <SectionTitulo>Favoritos em Eletrônicos</SectionTitulo>
+          <GridProdutos>
+
+            {produtosFiltrados.map((produto, index) => (
+            <CardProduto
+              key={index}
+              imagem={produto.imagem}
+              nome={produto.nome}
+              precoDe={produto.precoDe}
+              precoPor={produto.precoPor}
+              tipo={produto.tipo}
+            />
+          ))}
+          </GridProdutos>
+        </AreaProdutos>
       </Section>
 
 
@@ -101,6 +111,8 @@ const Botao = styled(Link)`
   }
 `
 const Section = styled.section`
+  display: flex;
+  gap: 2rem;
   padding: 2rem;
 `
 
@@ -108,4 +120,47 @@ const SectionTitulo = styled.h2`
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 1rem;
+`
+
+const Filtros = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+  gap: 2rem;
+  min-width: 10rem;
+  max-height: 16rem;
+  background-color: #f0f0f0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 3rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.5); 
+
+  button {
+    background: #023e8a;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+`
+
+const AreaProdutos = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+`
+
+
+const GridProdutos = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.5rem;
 `
