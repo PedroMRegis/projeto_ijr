@@ -1,167 +1,193 @@
-import styled from "styled-components"
-import { Link } from "react-router-dom"
-import CardProduto from "@/components/CardProduto"
-import imgKit1 from "@/assets/Kit1.png"
-import imgKit2 from "@/assets/Kit2.png"
-import imgKit3 from "@/assets/Kit3.png"
-import imgformaspagamento from "@/assets/pagamento.png"
-import comprasegura from "@/assets/comprasegura.png"
-import imgorcamento from "@/assets/imgprincipalorcamento.png"
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import imgBanner from "@/assets/imgprincipalorcamento.png"; // imagem do banner fixo da home/orçamento
 
-const Orcamento = () => {
+const Contato = () => {
   return (
     <Container>
       <Banner>
-        <Conteudo>
-          <TituloBanner>Solicite seu orçamento agora</TituloBanner>
-          <TextoBanner>Equipe especializada pronta pra atender você!</TextoBanner>
-          <Telefone><strong>(11) 99999-9999</strong></Telefone>
+        <BannerImagem src={imgBanner} alt="Banner de Contato" />
+        <BannerTexto>
+          <h1>Estamos prontos para te ajudar</h1>
           <BotaoWhatsapp href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer">
             Converse conosco via WhatsApp
           </BotaoWhatsapp>
-        </Conteudo>
+        </BannerTexto>
       </Banner>
 
-      <Titulo>Conheça nossos kits e personalize do seu jeito:</Titulo>
+      <Intro>
+        <Titulo>
+          <strong>Compartilhe seu desafio</strong> e receba uma solução personalizada.
+        </Titulo>
+      </Intro>
 
-      <GridCards>
-        <CardProduto
-          imagem={imgKit1}
-          nome="Kit escritório Inicial"
-          precoDe="2.819,00"
-          precoPor="2.033,10"
-        />
-        <CardProduto
-          imagem={imgKit2}
-          nome="Kit escritório Pro"
-          precoDe="4.783,00"
-          precoPor="3.587,85"
-        />
-        <CardProduto
-          imagem={imgKit3}
-          nome="Kit diretoria"
-          precoDe="5.900,00"
-          precoPor="3.983,70"
-        />
-      </GridCards>
+      <Formulario>
+        <Linha> 
+          <Input placeholder="Nome*" />
+          <Input placeholder="Telefone*" />
+        </Linha>
+        <Linha>
+          <Input placeholder="Email corporativo*" />
+          <Input placeholder="Empresa*" />
+        </Linha>
+        <Linha>
+          <Select>
+            <option value="">Segmento*</option>
+            <option value="TI">Tecnologia da Informação</option>
+            <option value="Financeiro">Financeiro</option>
+            <option value="Logistica">Logística</option>
+          </Select>
+          <Select>
+            <option value="">Departamento*</option>
+            <option value="RH">Recursos Humanos</option>
+            <option value="TI">TI</option>
+            <option value="Marketing">Marketing</option>
+          </Select>
+        </Linha>
+        <Linha>
+          <Select>
+            <option value="">Cargo*</option>
+            <option value="Analista">Analista</option>
+            <option value="Coordenador">Coordenador</option>
+            <option value="Diretor">Diretor</option>
+          </Select>
+          <Select>
+            <option value="">Qual o porte da empresa?*</option>
+            <option value="pequena">Pequena</option>
+            <option value="media">Média</option>
+            <option value="grande">Grande</option>
+          </Select>
+        </Linha>
+        <Linha>
+          <Input placeholder="Como podemos ajudar?*" />
+          <Select>
+            <option value="">Solução de interesse*</option>
+            <option value="cloud">Cloud & Data Center</option>
+            <option value="seguranca">Segurança da Informação</option>
+            <option value="automacao">Automação de Processos</option>
+          </Select>
+        </Linha>
 
-      <Rodape>
-        <Contato>
-          <p>Contato via WhatsApp: (11) 99999-9999</p>
-          <p>Televendas: (11) 0000-0000</p>
-          <p>Email: ramaraloffice@gmail.com</p>
-        </Contato>
-        <Pagamentos>
-          <img src={imgformaspagamento} alt="Formas de pagamento" />
-        </Pagamentos>
-        <Endereco>
-          R. Teodoro Sampaio - Pinheiros, São Paulo - SP, 04551-000
-        </Endereco>
-      </Rodape>
+        <Consentimento>
+          <label>
+            <input type="checkbox" /> Concordo em permitir que a empresa armazene e processe meus dados pessoais.
+          </label>
+        </Consentimento>
+
+        <BotaoEnviar>Enviar</BotaoEnviar>
+      </Formulario>
     </Container>
-  )
-}
+  );
+};
 
-export default Orcamento
+export default Contato;
 
-// ======================= Styled Components =======================
-
+// Estilos
 const Container = styled.div`
-  width: 100%;
-`
+  padding: 0;
+  background-color: #f4f8fb;
+`;
 
-const Banner = styled.section`
-  background-image: url(${imgorcamento});
-  background-size: cover;
-  background-position: center;
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+const Banner = styled.div`
   position: relative;
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
+`;
+
+const BannerImagem = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const BannerTexto = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 45, 114, 0.6);
   color: white;
   text-align: center;
-  padding: 2rem;
-`
 
-const Conteudo = styled.div`
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 2rem;
-  border-radius: 0.5rem;
-`
-
-const TituloBanner = styled.h1`
-  font-size: 3rem;
-  font-weight: bold;
-`
-
-const TextoBanner = styled.h2`
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 1rem 0;
-`
-
-const Telefone = styled.p`
-  font-size: 1.25rem;
-  margin-top: 1rem;
-
-  strong {
-    font-size: 1.5rem;
+  h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
   }
-`
+`;
 
-const BotaoWhatsapp = styled.a`
-  display: inline-block;
-  margin-top: 1.5rem;
-  padding: 0.75rem 2rem;
-  border: 2px solid white;
-  border-radius: 4px;
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background-color 0.2s, color 0.2s;
-
-  &:hover {
-    background-color: white;
-    color: #023e8a;
-  }
-`
+const Intro = styled.div`
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+`;
 
 const Titulo = styled.h2`
-  font-size: 1.25rem;
-  text-align: center;
-  margin: 2rem 0 1rem;
-`
-
-const GridCards = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  padding: 1rem;
-`
-
-const Rodape = styled.footer`
-  margin-top: 3rem;
-  background-color: #023e8a;
-  color: white;
-  padding: 2rem 1rem;
-  text-align: center;
-`
-
-const Contato = styled.div`
-  font-size: 0.875rem;
-  margin-bottom: 1rem;
-`
-
-const Pagamentos = styled.div`
-  img {
-    max-width: 300px;
-    margin: 0 auto;
+  font-size: 2rem;
+  color: #002d72;
+  strong {
+    color: #002d72;
   }
-`
+`;
 
-const Endereco = styled.p`
-  font-size: 0.75rem;
+const Formulario = styled.form`
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const Linha = styled.div`
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+`;
+
+const Input = styled.input`
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`;
+
+const Select = styled.select`
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`;
+
+const Consentimento = styled.div`
+  font-size: 0.85rem;
+  color: #333;
+  margin-top: 0.5rem;
+`;
+
+const BotaoEnviar = styled.button`
+  padding: 1rem;
+  background-color: #002d72;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+`;
+
+const BotaoWhatsapp = styled.a`
   margin-top: 1rem;
-`
+  display: inline-block;
+  text-align: center;
+  padding: 1rem 2rem;
+  background-color: #25d366;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  text-decoration: none;
+`;
