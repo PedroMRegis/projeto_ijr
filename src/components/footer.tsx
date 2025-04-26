@@ -9,8 +9,8 @@ export const footer = () => {
       <FooterContent>
         <p>© 2025 R. Amaral Office. Todos os direitos reservados.</p>
         <FooterLinks>
-          <a href="/politica-de-privacidade">Política de Privacidade</a>
-          <a href="/termos-de-uso">Termos de Uso</a>
+          <a href="#">Política de Privacidade</a>
+          <a href="#">Termos de Uso</a>
         </FooterLinks>
       </FooterContent>
     </Footer>

@@ -1,37 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react'
 import styled from "styled-components";
 import { FiltroProduto } from "@/utils/FiltroProduto";
 import CardProduto from "@/components/CardProduto";
 import moveis from "@/data/moveis";
+import ModalDetalhesProduto from "@/components/ModalDetalhesProduto";
+import { Produto } from "@/utils/FiltroProduto";
 
 const Moveis = () => {
   const { setFiltro, produtosFiltrados } = FiltroProduto(moveis);
+  const [produtoSelecionado, setProdutoSelecionado] = useState<Produto | null>(null);
 
   return (
-    <Section>
-      <Filtros>
-        <button onClick={() => setFiltro("todos")}>Todos</button>
-        <button onClick={() => setFiltro("cadeiras")}>Cadeiras</button>
-        <button onClick={() => setFiltro("mesas")}>Mesas</button>
-        <button onClick={() => setFiltro("armários e estantes")}>Armários e estantes</button>
-      </Filtros>
+    <>
+      <Section>
+        <Filtros>
+          <button onClick={() => setFiltro("todos")}>Todos</button>
+          <button onClick={() => setFiltro("cadeiras")}>Cadeiras</button>
+          <button onClick={() => setFiltro("mesas")}>Mesas</button>
+          <button onClick={() => setFiltro("armários e estantes")}>Armários e Estantes</button>
+        </Filtros>
 
-      <AreaProdutos>
-        <SectionTitulo>Móveis</SectionTitulo>
-        <GridProdutos>
-          {produtosFiltrados.map((produto, index) => (
-            <CardProduto
-              key={index}
-              imagem={produto.imagem}
-              nome={produto.nome}
-              precoDe={produto.precoDe}
-              precoPor={produto.precoPor}
-              tipo={produto.tipo}
-            />
-          ))}
-        </GridProdutos>
-      </AreaProdutos>
-    </Section>
+        <AreaProdutos>
+          <SectionTitulo>Móveis</SectionTitulo>
+          <GridProdutos>
+            {produtosFiltrados.map((produto, index) => (
+              <CardProduto
+                key={index}
+                produto={produto}
+                onDetalhes={(p) => setProdutoSelecionado(p)}
+              />
+            ))}
+          </GridProdutos>
+        </AreaProdutos>
+      </Section>
+
+      {produtoSelecionado && (
+        <ModalDetalhesProduto
+          produto={produtoSelecionado}
+          onClose={() => setProdutoSelecionado(null)}
+        />
+      )}
+    </>
   );
 };
 
@@ -49,7 +58,7 @@ const Filtros = styled.div`
   border-radius: 0.75rem;
   box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.5);
   gap: 4rem;
-  max-height: 22rem;
+  max-height: 35rem;
   background-color: #f0f0f0;
   padding: 1rem;
   margin-top: 3rem;
@@ -84,6 +93,6 @@ const SectionTitulo = styled.h2`
 const GridProdutos = styled.div`
   display: grid;
   padding: 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
 `;
