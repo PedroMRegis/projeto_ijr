@@ -4,6 +4,8 @@ import Orcamento from "@/pages/Orcamento"
 import Suprimentos from "@/pages/Suprimentos"
 import Moveis from "@/pages/Moveis"
 import Eletronicos from "@/pages/Eletronicos"
+import Login from "@/pages/Login"
+import LoginFuncionario from "@/pages/LoginFuncionario"
 
 const AppRoutes = () => {
   return (
@@ -13,6 +15,8 @@ const AppRoutes = () => {
       <Route path="/suprimentos" element={<Suprimentos />} />
       <Route path="/moveis" element={<Moveis />} />
       <Route path="/eletronicos" element={<Eletronicos />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/login-funcionario" element={<LoginFuncionario />} />
     </Routes>
   )
 }
