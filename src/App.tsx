@@ -5,6 +5,7 @@ import TopHeader from './components/TopHeader'
 import MiddleHeader from '@/components/MiddleHeader'
 import BottomHeader from '@/components/BottomHeader'
 import RoutesConfig from "@/Routes/routes"
+import  Footer  from '@/components/footer'
 
 
 function App (){
@@ -16,6 +17,10 @@ function App (){
     <BottomHeader />
     <RoutesConfig />
     </BrowserRouter>
+
+
+
+    <Footer />
     </>
   )
 }

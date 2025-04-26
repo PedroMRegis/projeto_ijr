@@ -42,7 +42,7 @@ const Header = styled.header`
   color: white;
   padding: 0.75rem 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; 
   flex-wrap: wrap;
   align-items: center;
   font-size: 0.875rem;
