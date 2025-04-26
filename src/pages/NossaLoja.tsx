@@ -8,16 +8,6 @@ import lojaImg from "@/assets/imgloja.png"
 const Nossaloja = () => {
   return (
     <Wrapper>
-      <Header>
-        <Contato>
-          <span>📱 Contate via WhatsApp: <strong>(11)99999-9999</strong></span>
-          <span>📞 Televendas: <strong>(11)0000-0000</strong></span>
-        </Contato>
-        <Nav>
-          <StyledLink to="#">Nossa loja</StyledLink>
-          <StyledLink to="#">Atendimento</StyledLink>
-        </Nav>
-      </Header>
 
       <Main>
         <Titulo>NOSSA LOJA</Titulo>
@@ -41,7 +31,7 @@ const Nossaloja = () => {
 
 export default Nossaloja
 
-// ======================= Styled Components =======================
+
 
 const Wrapper = styled.div`
   font-family: sans-serif;
@@ -53,7 +43,7 @@ const Header = styled.header`
   color: white;
   padding: 0.75rem 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; 
   flex-wrap: wrap;
   align-items: center;
   font-size: 0.875rem;
