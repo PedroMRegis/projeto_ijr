@@ -1,11 +1,14 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 
-const Login = () => {
+const CriarConta = () => {
   return (
     <Container>
       <FormContainer>
-        <Titulo>Acesse sua conta</Titulo>
+        <Titulo>Crie sua conta</Titulo>
+
+        <Label htmlFor="nome">Nome Completo</Label>
+        <Input type="text" id="nome" placeholder="Nome completo*" />
 
         <Label htmlFor="email">E-mail</Label>
         <Input type="email" id="email" placeholder="Email*" />
@@ -13,21 +16,25 @@ const Login = () => {
         <Label htmlFor="senha">Senha</Label>
         <Input type="password" id="senha" placeholder="Senha*" />
 
-        <BotaoEntrar>ENTRAR</BotaoEntrar>
+        <Label htmlFor="confirmarSenha">Confirmar Senha</Label>
+        <Input type="password" id="confirmarSenha" placeholder="Confirmar senha*" />
+
+        <BotaoCriarConta>CRIAR CONTA</BotaoCriarConta>
 
         <Separador>
           <Linha />
-          <span>Não tem uma conta?</span>
+          <span>Já tem uma conta?</span>
           <Linha />
         </Separador>
 
-        <LinkCriarConta to="/criar-conta">CRIAR CONTA</LinkCriarConta>
+        <LinkVoltarLogin to="/login">VOLTAR PARA LOGIN</LinkVoltarLogin>
       </FormContainer>
     </Container>
   )
 }
 
-export default Login
+export default CriarConta
+
 
 const Container = styled.section`
   background-color: #f4f4f4;
@@ -36,6 +43,7 @@ const Container = styled.section`
   justify-content: center;
   align-items: start;
   padding-top: 3rem;
+  padding-bottom: 3rem
 `
 
 const FormContainer = styled.form`
@@ -44,7 +52,7 @@ const FormContainer = styled.form`
   border-radius: 0.5rem;
   box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 550px; 
+  max-width: 550px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -69,7 +77,7 @@ const Input = styled.input`
   font-size: 0.95rem;
 `
 
-const BotaoEntrar = styled.button`
+const BotaoCriarConta = styled.button`
   margin-top: 1rem;
   background-color: #023e8a;
   color: white;
@@ -103,7 +111,7 @@ const Linha = styled.hr`
   border: none;
 `
 
-const LinkCriarConta = styled(Link)`
+const LinkVoltarLogin = styled(Link)`
   text-align: center;
   border: 1px solid #023e8a;
   padding: 0.75rem;
