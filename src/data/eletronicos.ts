@@ -13,6 +13,7 @@ const eletronicos: Produto[] = [
     precoDe: "89,00",
     precoPor: "36,99",
     tipo: "mouses",
+    descricao: "Mouse HP USB de alta precisão e design ergonômico, perfeito para uso diário."
   },
   {
     imagem: telefone,
@@ -20,13 +21,15 @@ const eletronicos: Produto[] = [
     precoDe: "299,00",
     precoPor: "253,90",
     tipo: "essenciais escritorio",
+    descricao: "Telefone IP profissional com excelente qualidade de áudio e recursos avançados para escritórios."
   },
   {
     imagem: monitor,
-    nome: "Monitor LG 22",
+    nome: "Monitor LG 22\"",
     precoDe: "899,00",
     precoPor: "759,00",
     tipo: "monitores",
+    descricao: "Monitor LG de 22 polegadas com resolução Full HD para imagens claras e detalhadas."
   },
   {
     imagem: teclado,
@@ -34,6 +37,7 @@ const eletronicos: Produto[] = [
     precoDe: "129,00",
     precoPor: "89,90",
     tipo: "teclados",
+    descricao: "Teclado Logitech USB confortável, silencioso e ideal para aumentar a produtividade."
   },
   {
     imagem: impressora,
@@ -41,6 +45,7 @@ const eletronicos: Produto[] = [
     precoDe: "999,00",
     precoPor: "830,00",
     tipo: "essenciais escritorio",
+    descricao: "Impressora HP Laser eficiente e econômica, indicada para demandas de alta produtividade."
   },
   {
     imagem: desktop,
@@ -48,6 +53,7 @@ const eletronicos: Produto[] = [
     precoDe: "899,00",
     precoPor: "799,00",
     tipo: "desktop",
+    descricao: "Computador Desktop robusto, perfeito para ambientes corporativos e multitarefas."
   },
 ]
 

@@ -6,6 +6,7 @@ export type Produto = {
   precoDe?: string
   precoPor: string
   tipo: string
+  descricao: string
 }
 
 export function FiltroProduto(lista: Produto[]) {

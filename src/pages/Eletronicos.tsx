@@ -1,18 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from "styled-components"
 import { FiltroProduto } from "@/utils/FiltroProduto"
 import eletronicos from "@/data/eletronicos"
 import CardProduto from "@/components/CardProduto"
+import ModalDetalhesProduto from "@/components/ModalDetalhesProduto" 
+import { Produto } from "@/utils/FiltroProduto" 
 
 const Eletronicos = () => {
   const { setFiltro, produtosFiltrados } = FiltroProduto(eletronicos)
+  const [produtoSelecionado, setProdutoSelecionado] = useState<Produto | null>(null) 
+
   return (
-    <Section>
+    <>
+      <Section>
         <Filtros>
           <button onClick={() => setFiltro("todos")}>Todos</button>
           <button onClick={() => setFiltro("monitores")}>Monitores</button>
           <button onClick={() => setFiltro("mouses")}>Mouses</button>
-          <button onClick={() => setFiltro("essenciais escritorio")}>Essenciais Escritorio</button>
+          <button onClick={() => setFiltro("essenciais escritorio")}>Essenciais Escritório</button>
           <button onClick={() => setFiltro("teclados")}>Teclados</button>
           <button onClick={() => setFiltro("desktop")}>Desktop</button>
         </Filtros>
@@ -20,24 +25,29 @@ const Eletronicos = () => {
         <AreaProdutos>
           <SectionTitulo>Eletrônicos</SectionTitulo>
           <GridProdutos>
-
             {produtosFiltrados.map((produto, index) => (
-            <CardProduto
-              key={index}
-              imagem={produto.imagem}
-              nome={produto.nome}
-              precoDe={produto.precoDe}
-              precoPor={produto.precoPor}
-              tipo={produto.tipo}
-            />
-          ))}
+              <CardProduto
+                key={index}
+                produto={produto}
+                onDetalhes={(p) => setProdutoSelecionado(p)}
+              />
+            ))}
           </GridProdutos>
         </AreaProdutos>
       </Section>
+
+      {produtoSelecionado && (
+        <ModalDetalhesProduto
+          produto={produtoSelecionado}
+          onClose={() => setProdutoSelecionado(null)}
+        />
+      )}
+    </>
   )
 }
 
 export default Eletronicos
+
 
 const Section = styled.section`
   display: flex;
@@ -83,13 +93,11 @@ const AreaProdutos = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-
 `
-
 
 const GridProdutos = styled.div`
   display: grid;
   padding: 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
 `
