@@ -2,9 +2,6 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 import lojaImg from "@/assets/imgloja.png"
 
-
-
-
 const Nossaloja = () => {
   return (
     <Wrapper>
@@ -30,64 +27,24 @@ const Nossaloja = () => {
 
 export default Nossaloja
 
-
-
 const Wrapper = styled.div`
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif; /* Fonte moderna e bonita */
   color: #000;
-`
-
-const Header = styled.header`
-  background-color: #023e8a;
-  color: white;
-  padding: 0.75rem 1rem;
   display: flex;
-  justify-content: space-between; 
-  flex-wrap: wrap;
-  align-items: center;
-  font-size: 0.875rem;
-`
-
-const Contato = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-
-  @media (min-width: 600px) {
-    flex-direction: row;
-    gap: 2rem;
-  }
-
-  span {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-`
-
-const Nav = styled.nav`
-  display: flex;
-  gap: 1.5rem;
-`
-
-const StyledLink = styled(Link)`
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-
-  &:hover {
-    text-decoration: underline;
-  }
+  justify-content: center;
+  padding: 2rem;
 `
 
 const Main = styled.main`
-  padding: 2rem;
   text-align: center;
+  width: 100%;
+  max-width: 1200px;
 `
 
 const Titulo = styled.h1`
   font-size: 2rem;
   color: #023e8a;
+  margin-bottom: 0.5rem;
 `
 
 const Subtitulo = styled.h2`
@@ -98,10 +55,10 @@ const Subtitulo = styled.h2`
 
 const Conteudo = styled.div`
   display: flex;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 2rem;
-  align-items: flex-start;
+  flex-wrap: wrap;
 `
 
 const Imagem = styled.img`
@@ -113,19 +70,21 @@ const Imagem = styled.img`
 
 const BoxEndereco = styled.div`
   background-color: #f1f1f1;
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: 0.5rem;
-  text-align: left;
+  text-align: center; /* Centraliza o conteúdo dentro da caixa */
   max-width: 400px;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5; /* Deixa a leitura mais confortável */
 
   h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
   }
 
   p {
-    margin: 0.25rem 0;
+    margin: 0.5rem 0;
   }
 `
 
