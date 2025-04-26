@@ -1,26 +1,27 @@
 import styled from "styled-components"
+import { Produto } from "@/utils/FiltroProduto"
 
 type CardProdutoProps = {
-  imagem: string
-  nome: string
-  precoDe?: string
-  precoPor: string
-  tipo: string
+  produto: Produto
+  onDetalhes: (produto: Produto) => void
 }
 
-const CardProduto = ({ imagem, nome, precoDe, precoPor,tipo }: CardProdutoProps) => {
+const CardProduto = ({ produto, onDetalhes }: CardProdutoProps) => {
   return (
     <Card>
-      <Imagem src={imagem} alt={nome} />
-      <Titulo>{nome}</Titulo>
-      {precoDe && <PrecoAntigo>De: R$ {precoDe}</PrecoAntigo>}
-      <PrecoNovo>Por: R$ {precoPor} à vista</PrecoNovo>
-      <Botao>Mais Detalhes</Botao>
+      <Imagem src={produto.imagem} alt={produto.nome} />
+      <Titulo>{produto.nome}</Titulo>
+
+      {produto.precoDe && <PrecoAntigo>De: R$ {produto.precoDe}</PrecoAntigo>}
+      <PrecoNovo>Por: R$ {produto.precoPor} à vista</PrecoNovo>
+
+      <Botao onClick={() => onDetalhes(produto)}>Mais Detalhes</Botao>
     </Card>
   )
 }
 
 export default CardProduto
+
 
 const Card = styled.div`
   background: #fff;
@@ -32,12 +33,6 @@ const Card = styled.div`
   align-items: center;
   max-width: 13rem;
   width: 100%;
-  transition: transform 0.2s, box-shadow 0.2s;
-
-   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-  }
 `
 
 const Imagem = styled.img`
