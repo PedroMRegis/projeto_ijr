@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import imgBanner from "@/assets/imgprincipalorcamento.png"; // imagem do banner fixo da home/orçamento
+import imgBanner from "@/assets/imgprincipalorcamento.png";
 
 const Contato = () => {
   return (
@@ -22,7 +22,7 @@ const Contato = () => {
       </Intro>
 
       <Formulario>
-        <Linha> 
+        <Linha>
           <Input placeholder="Nome*" />
           <Input placeholder="Telefone*" />
         </Linha>
@@ -82,7 +82,6 @@ const Contato = () => {
 
 export default Contato;
 
-// Estilos
 const Container = styled.div`
   padding: 0;
   background-color: #f4f8fb;
@@ -191,3 +190,5 @@ const BotaoWhatsapp = styled.a`
   border-radius: 4px;
   text-decoration: none;
 `;
+
+
