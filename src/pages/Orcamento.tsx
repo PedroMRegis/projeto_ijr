@@ -14,48 +14,7 @@ const Contato = () => {
           </BotaoWhatsapp>
         </BannerTexto>
       </Banner>
-
-
-      <Titulo>Conheça nossos kits e personalize do seu jeito:</Titulo>
-
-      <GridCards>
-        <CardProduto
-          imagem={imgKit1}
-          nome="Kit escritório Inicial"
-          precoDe="2.819,00"
-          precoPor="2.033,10"
-          tipo="kit"
-        />
-        <CardProduto
-          imagem={imgKit2}
-          nome="Kit escritório Pro"
-          precoDe="4.783,00"
-          precoPor="3.587,85"
-          tipo="kit"
-        />
-        <CardProduto
-          imagem={imgKit3}
-          nome="Kit diretoria"
-          precoDe="5.900,00"
-          precoPor="3.983,70"
-          tipo="kit"
-        />
-      </GridCards>
-
-      <Rodape>
-        <Contato>
-          <p>Contato via WhatsApp: (11) 99999-9999</p>
-          <p>Televendas: (11) 0000-0000</p>
-          <p>Email: ramaraloffice@gmail.com</p>
-        </Contato>
-        <Pagamentos>
-          <img src={imgformaspagamento} alt="Formas de pagamento" />
-        </Pagamentos>
-        <Endereco>
-          R. Teodoro Sampaio - Pinheiros, São Paulo - SP, 04551-000
-        </Endereco>
-      </Rodape>
-        
+      
       <Intro>
         <Titulo>
           <strong>Compartilhe seu desafio</strong> e receba uma solução personalizada.
