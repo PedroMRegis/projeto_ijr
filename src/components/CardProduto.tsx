@@ -32,6 +32,12 @@ const Card = styled.div`
   align-items: center;
   max-width: 13rem;
   width: 100%;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+   &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  }
 `
 
 const Imagem = styled.img`

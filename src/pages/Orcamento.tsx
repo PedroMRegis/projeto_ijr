@@ -30,18 +30,21 @@ const Orcamento = () => {
           nome="Kit escritório Inicial"
           precoDe="2.819,00"
           precoPor="2.033,10"
+          tipo="kit"
         />
         <CardProduto
           imagem={imgKit2}
           nome="Kit escritório Pro"
           precoDe="4.783,00"
           precoPor="3.587,85"
+          tipo="kit"
         />
         <CardProduto
           imagem={imgKit3}
           nome="Kit diretoria"
           precoDe="5.900,00"
           precoPor="3.983,70"
+          tipo="kit"
         />
       </GridCards>
 
@@ -64,7 +67,7 @@ const Orcamento = () => {
 
 export default Orcamento
 
-// ======================= Styled Components =======================
+
 
 const Container = styled.div`
   width: 100%;

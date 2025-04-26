@@ -8,17 +8,6 @@ import lojaImg from "@/assets/imgloja.png"
 const Nossaloja = () => {
   return (
     <Wrapper>
-      <Header>
-        <Contato>
-          <span>📱 Contate via WhatsApp: <strong>(11)99999-9999</strong></span>
-          <span>📞 Televendas: <strong>(11)0000-0000</strong></span>
-        </Contato>
-        <Nav>
-          <StyledLink to="#">Nossa loja</StyledLink>
-          <StyledLink to="#">Atendimento</StyledLink>
-        </Nav>
-      </Header>
-
       <Main>
         <Titulo>NOSSA LOJA</Titulo>
         <Subtitulo>SÃO PAULO</Subtitulo>
@@ -41,7 +30,7 @@ const Nossaloja = () => {
 
 export default Nossaloja
 
-// ======================= Styled Components =======================
+
 
 const Wrapper = styled.div`
   font-family: sans-serif;
