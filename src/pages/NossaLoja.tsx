@@ -8,7 +8,6 @@ import lojaImg from "@/assets/imgloja.png"
 const Nossaloja = () => {
   return (
     <Wrapper>
-
       <Main>
         <Titulo>NOSSA LOJA</Titulo>
         <Subtitulo>SÃO PAULO</Subtitulo>

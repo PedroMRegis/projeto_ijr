@@ -30,7 +30,7 @@ const TopHeader = () => {
         </LeftSection>
 
         <RightSection>
-          <LinkItem to="nossa-loja">Nossa loja</LinkItem>
+          <LinkItem to="/nossa-loja">Nossa loja</LinkItem>
           <LinkItem to="atendimento">Atendimento</LinkItem>
         </RightSection>
     </Header>

@@ -4,10 +4,11 @@ import Orcamento from "@/pages/Orcamento"
 import Suprimentos from "@/pages/Suprimentos"
 import Moveis from "@/pages/Moveis"
 import Eletronicos from "@/pages/Eletronicos"
+import Nossaloja from "@/pages/NossaLoja"
 import Login from "@/pages/Login"
 import LoginFuncionario from "@/pages/LoginFuncionario"
-import Nossaloja from "@/pages/NossaLoja"
 import CriarConta from "@/pages/CriarConta"
+
 
 const AppRoutes = () => {
   return (
