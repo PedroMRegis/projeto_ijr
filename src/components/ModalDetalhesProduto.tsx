@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { Produto } from "@/utils/FiltroProduto"
-import { X } from "@phosphor-icons/react"
+import { X, Minus, Plus } from "@phosphor-icons/react" // pesquisei e achei a biblioteca Phosphor Icons, que é uma biblioteca de ícones para React, peguei dela o X, + e -. 
+import { useState } from "react" // usei o usestate para controlar a quantidade de produtos que o usuário quer adicionar ao carrinho (serve para atualizar o estado das variaveis) e para criar essas variaveis.
 
 type ModalDetalhesProdutoProps = {
   produto: Produto
@@ -8,11 +9,23 @@ type ModalDetalhesProdutoProps = {
 }
 
 const ModalDetalhesProduto = ({ produto, onClose }: ModalDetalhesProdutoProps) => {
+  const [quantidade, setQuantidade] = useState(1)
+
+  const aumentarQuantidade = () => {
+    setQuantidade((qtd) => qtd + 1) 
+  }
+
+  const diminuirQuantidade = () => {
+    if (quantidade > 1) {
+      setQuantidade((qtd) => qtd - 1)
+    }
+  }
+
   return (
     <Overlay onClick={onClose}>
       <ModalContainer onClick={(e) => e.stopPropagation()}>
         <BotaoFechar onClick={onClose}>
-          <X size={24} weight="bold" />
+          <X size={24} weight="bold" /> {/* X é o ícone de fechar, que peguei da biblioteca Phosphor Icons */}
         </BotaoFechar>
 
         <Conteudo>
@@ -28,7 +41,17 @@ const ModalDetalhesProduto = ({ produto, onClose }: ModalDetalhesProdutoProps) =
 
             <Descricao>{produto.descricao}</Descricao>
 
-            <BotaoComprar>Adicionar ao Carrinho</BotaoComprar>
+            <Contador>
+              <BotaoContador onClick={diminuirQuantidade}>
+                <Minus size={20} />
+              </BotaoContador>
+              <Quantidade>{quantidade}</Quantidade>
+              <BotaoContador onClick={aumentarQuantidade}>
+                <Plus size={20} />
+              </BotaoContador>
+            </Contador>
+
+            <BotaoComprar>Adicionar {quantidade} ao Carrinho</BotaoComprar>
           </Info>
         </Conteudo>
       </ModalContainer>
@@ -37,7 +60,6 @@ const ModalDetalhesProduto = ({ produto, onClose }: ModalDetalhesProdutoProps) =
 }
 
 export default ModalDetalhesProduto
-
 
 const Overlay = styled.div`
   position: fixed;
@@ -50,13 +72,14 @@ const Overlay = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding: 1rem;
 `
 
 const ModalContainer = styled.div`
   background: white;
-  border-radius: 0.5rem;
-  width: 90%;
-  max-width: 900px;
+  border-radius: 0.75rem;
+  width: 100%;
+  max-width: 950px;
   padding: 2rem;
   position: relative;
 `
@@ -75,11 +98,15 @@ const Conteudo = styled.div`
   flex-wrap: wrap;
   gap: 2rem;
   align-items: center;
+
+  @media (max-width: 768px) { //funcao que pesquisei e faz o modal ser responsivo
+    flex-direction: column; // faz com que mude de linha para coluna, se as telas forem menores que 768 px (pesquisei e esse numero é o mais comum para telas de celular)
+  }
 `
 
 const Imagem = styled.img`
   flex: 1;
-  max-width: 350px;
+  max-width: 400px;
   width: 100%;
   height: auto;
   object-fit: contain;
@@ -93,7 +120,7 @@ const Info = styled.div`
 `
 
 const Nome = styled.h2`
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #023e8a;
 `
@@ -119,17 +146,46 @@ const PrecoPor = styled.span`
 const Descricao = styled.p`
   font-size: 1rem;
   color: #555;
+  line-height: 1.4;
+`
+
+const Contador = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+`
+
+const BotaoContador = styled.button`
+  background: #f0f0f0;
+  border: none;
+  border-radius: 50%;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: #e0e0e0;
+  }
+`
+
+const Quantidade = styled.span`
+  font-size: 1.25rem;
+  font-weight: bold;
 `
 
 const BotaoComprar = styled.button`
   margin-top: 1rem;
   background-color: #023e8a;
   color: white;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem;
   border: none;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   font-weight: bold;
   cursor: pointer;
+  font-size: 1rem;
 
   &:hover {
     opacity: 0.9;
