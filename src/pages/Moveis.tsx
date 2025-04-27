@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import styled from "styled-components";
 import { FiltroProduto } from "@/utils/FiltroProduto";
 import CardProduto from "@/components/CardProduto";
@@ -64,6 +64,11 @@ const Section = styled.section`
   display: flex;
   gap: 2rem;
   padding: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 1rem;
+  }
 `;
 
 const Filtros = styled.div`
@@ -90,6 +95,19 @@ const Filtros = styled.div`
       opacity: 0.9;
     }
   }
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    button {
+      flex: 1 1 45%;
+      min-width: 120px;
+    }
+  }
 `;
 
 const AreaProdutos = styled.div`
@@ -102,6 +120,7 @@ const SectionTitulo = styled.h2`
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 1rem;
+  text-align: center;
 `;
 
 const GridProdutos = styled.div`
@@ -109,4 +128,10 @@ const GridProdutos = styled.div`
   padding: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+  }
 `;

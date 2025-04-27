@@ -58,36 +58,42 @@ const Eletronicos = ({setBusca,termoBusca}: EletronicosProps) => {
       )}
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Eletronicos
-
+export default Eletronicos;
 
 const Section = styled.section`
   display: flex;
   gap: 2rem;
   padding: 2rem;
-`
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 1rem;
+  }
+`;
 
 const SectionTitulo = styled.h2`
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 1rem;
-`
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+`;
 
 const Filtros = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 0.75rem;
-  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
-  gap: 4rem;
-  max-height: 35rem;
   background-color: #f0f0f0;
   padding: 1rem;
-  border-radius: 0.5rem;
   margin-top: 3rem;
-  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.5); 
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.5);
+  gap: 4rem;
 
   button {
     background: #023e8a;
@@ -102,17 +108,36 @@ const Filtros = styled.div`
       opacity: 0.9;
     }
   }
-`
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    button {
+      flex: 1 1 45%;
+      min-width: 120px;
+    }
+  }
+`;
 
 const AreaProdutos = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-`
+`;
 
 const GridProdutos = styled.div`
   display: grid;
   padding: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
-`
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+`;
