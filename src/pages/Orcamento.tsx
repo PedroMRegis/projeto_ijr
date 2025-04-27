@@ -1,9 +1,24 @@
+
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import imgBanner from "@/assets/imgprincipalorcamento.png";
+import BottomHeader from "@/components/BottomHeader";
+import MiddleHeader from "@/components/MiddleHeader";
+import TopHeader from "@/components/TopHeader";
+import Footer from "@/components/Footer";
 
-const Contato = () => {
+type OrcamentoProps = {
+  setBusca: (valor: string) => void;
+  termoBusca: string;
+};
+
+const Contato = ({ setBusca, termoBusca }: OrcamentoProps) => {
   return (
+    <>
+    <TopHeader />
+    <MiddleHeader setBusca={setBusca} termoBusca={termoBusca} />
+    <BottomHeader />
+
     <Container>
       <Banner>
         <BannerImagem src={imgBanner} alt="Banner de Contato" />
@@ -77,13 +92,13 @@ const Contato = () => {
         <BotaoEnviar>Enviar</BotaoEnviar>
       </Formulario>
     </Container>
+
+    <Footer />
+    </>
   );
 };
 
-
-
 export default Contato;
-
 
 const Container = styled.div`
   padding: 0;
@@ -95,6 +110,10 @@ const Banner = styled.div`
   width: 100%;
   height: 450px;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    height: 300px;
+  }
 `;
 
 const BannerImagem = styled.img`
@@ -120,6 +139,11 @@ const BannerTexto = styled.div`
   h1 {
     font-size: 2.2rem;
     margin-bottom: 1rem;
+
+    @media (max-width: 768px) {
+      font-size: 1.6rem;
+      padding: 0 1rem;
+    }
   }
 `;
 
@@ -132,8 +156,14 @@ const Intro = styled.div`
 const Titulo = styled.h2`
   font-size: 2rem;
   color: #002d72;
+  text-align: center;
+
   strong {
     color: #002d72;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
   }
 `;
 
@@ -150,6 +180,10 @@ const Linha = styled.div`
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const Input = styled.input`
@@ -157,6 +191,11 @@ const Input = styled.input`
   padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+  min-width: 45%;
+
+  @media (max-width: 768px) {
+    min-width: 100%;
+  }
 `;
 
 const Select = styled.select`
@@ -164,6 +203,11 @@ const Select = styled.select`
   padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+  min-width: 45%;
+
+  @media (max-width: 768px) {
+    min-width: 100%;
+  }
 `;
 
 const Consentimento = styled.div`
@@ -180,6 +224,11 @@ const BotaoEnviar = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    width: 80%;
+    margin: 0 auto;
+  }
 `;
 
 const BotaoWhatsapp = styled.a`
@@ -192,6 +241,8 @@ const BotaoWhatsapp = styled.a`
   font-weight: bold;
   border-radius: 4px;
   text-decoration: none;
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `;
-
-

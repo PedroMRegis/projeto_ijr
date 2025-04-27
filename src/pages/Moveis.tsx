@@ -1,17 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import styled from "styled-components";
 import { FiltroProduto } from "@/utils/FiltroProduto";
 import CardProduto from "@/components/CardProduto";
 import moveis from "@/data/moveis";
 import ModalDetalhesProduto from "@/components/ModalDetalhesProduto";
 import { Produto } from "@/utils/FiltroProduto";
+import TopHeader from '@/components/TopHeader';
+import MiddleHeader from '@/components/MiddleHeader';
+import BottomHeader from '@/components/BottomHeader';
+import  Footer from "@/components/Footer";
 
-const Moveis = () => {
+type MoveisProps = {
+  setBusca: (valor: string) => void;
+  termoBusca: string;
+};
+
+const Moveis = ({ setBusca, termoBusca }: MoveisProps) => {
   const { setFiltro, produtosFiltrados } = FiltroProduto(moveis);
   const [produtoSelecionado, setProdutoSelecionado] = useState<Produto | null>(null);
 
   return (
     <>
+      <TopHeader />
+      <MiddleHeader setBusca={setBusca} termoBusca={termoBusca} />
+      <BottomHeader />
+      
       <Section>
         <Filtros>
           <button onClick={() => setFiltro("todos")}>Todos</button>
@@ -40,6 +53,7 @@ const Moveis = () => {
           onClose={() => setProdutoSelecionado(null)}
         />
       )}
+      <Footer />
     </>
   );
 };
@@ -50,6 +64,11 @@ const Section = styled.section`
   display: flex;
   gap: 2rem;
   padding: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 1rem;
+  }
 `;
 
 const Filtros = styled.div`
@@ -76,6 +95,19 @@ const Filtros = styled.div`
       opacity: 0.9;
     }
   }
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    button {
+      flex: 1 1 45%;
+      min-width: 120px;
+    }
+  }
 `;
 
 const AreaProdutos = styled.div`
@@ -88,6 +120,7 @@ const SectionTitulo = styled.h2`
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 1rem;
+  text-align: center;
 `;
 
 const GridProdutos = styled.div`
@@ -95,4 +128,10 @@ const GridProdutos = styled.div`
   padding: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+  }
 `;
