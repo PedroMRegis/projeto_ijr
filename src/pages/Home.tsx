@@ -1,16 +1,27 @@
 import styled from "styled-components"
+import TopHeader from "@/components/TopHeader";
+import MiddleHeader from "@/components/MiddleHeader";
+import BottomHeader from "@/components/BottomHeader";
+import Footer from "@/components/Footer";
 import banner from "@/assets/banner.png"
 import BannerEletronicos from '@/assets/banner_eletronicos.png'
 import BannerMoveis from '@/assets/banner_moveis.png'
 import BannerSuprimentos from '@/assets/banner_suprimentos.png'
 
+type HomeProps = {
+  setBusca: (valor: string) => void;
+  termoBusca: string;
+};
 
 
-
-const Home = () => {
+const Home = ({ setBusca, termoBusca }: HomeProps) => {
   
   return (
     <>
+      <TopHeader />
+      <MiddleHeader setBusca={setBusca} termoBusca={termoBusca} />
+      <BottomHeader />
+
       <Container>
         <Conteudo>
           <Titulo>30% OFF</Titulo>
@@ -40,6 +51,8 @@ const Home = () => {
         </BannerCard>
       </BannerRow>
     </Section>
+
+    <Footer />
 
 
     </>

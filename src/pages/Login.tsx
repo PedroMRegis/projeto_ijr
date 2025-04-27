@@ -1,29 +1,37 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import TopHeader from "@/components/TopHeader"
+import MiddleHeaderLogin from "@/components/MiddleHeaderLogin"
+import Footer from "@/components/Footer"
 
 const Login = () => {
   return (
-    <Container>
-      <FormContainer>
-        <Titulo>Acesse sua conta</Titulo>
+    <>
+      <TopHeader />
+      <MiddleHeaderLogin />
+      <Container>
+        <FormContainer>
+          <Titulo>Acesse sua conta</Titulo>
 
-        <Label htmlFor="email">E-mail</Label>
-        <Input type="email" id="email" placeholder="Email*" />
+          <Label htmlFor="email">E-mail</Label>
+          <Input type="email" id="email" placeholder="Email*" />
 
-        <Label htmlFor="senha">Senha</Label>
-        <Input type="password" id="senha" placeholder="Senha*" />
+          <Label htmlFor="senha">Senha</Label>
+          <Input type="password" id="senha" placeholder="Senha*" />
 
-        <BotaoEntrar>ENTRAR</BotaoEntrar>
+          <BotaoEntrar>ENTRAR</BotaoEntrar>
 
-        <Separador>
-          <Linha />
-          <span>Não tem uma conta?</span>
-          <Linha />
-        </Separador>
+          <Separador>
+            <Linha />
+            <span>Não tem uma conta?</span>
+            <Linha />
+          </Separador>
 
-        <LinkCriarConta to="/criar-conta">CRIAR CONTA</LinkCriarConta>
-      </FormContainer>
-    </Container>
+          <LinkCriarConta to="/criar-conta">CRIAR CONTA</LinkCriarConta>
+        </FormContainer>
+      </Container>
+      <Footer />
+    </>
   )
 }
 
@@ -36,6 +44,7 @@ const Container = styled.section`
   justify-content: center;
   align-items: start;
   padding-top: 3rem;
+  padding-bottom: 3rem;
 `
 
 const FormContainer = styled.form`

@@ -5,7 +5,13 @@ import { Input } from "@/components/ui/input"
 import logo from "@/assets/logo_loja.jpg"
 import { Link, useNavigate } from "react-router-dom"
 
-const MiddleHeader = () => {
+
+type MiddleHeaderProps = {
+  setBusca: (valor: string) => void; 
+  termoBusca: string;
+};
+
+const MiddleHeader = ({ setBusca, termoBusca }: MiddleHeaderProps) => {
   const [menuAberto, setMenuAberto] = useState(false)
   const navigate = useNavigate()
   const menuRef = useRef<HTMLDivElement>(null)
@@ -22,6 +28,12 @@ const MiddleHeader = () => {
       document.removeEventListener("mousedown", handleClickFora)
     }
   }, [])
+  function Pesquisa() {
+    if (setBusca) {
+      setBusca(termoBusca)
+      navigate("/busca");
+    }
+  }
 
   return (
     <Container>
@@ -33,8 +45,18 @@ const MiddleHeader = () => {
         </LogoLoja>
 
         <BarraPesquisa>
-          <StyledInput type="text" placeholder="Buscar por" />
-          <IconePesquisa>
+        <StyledInput 
+            type="text"
+            placeholder="Buscar por"
+            value={termoBusca}
+            onChange={(e) => setBusca(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                Pesquisa();
+              }
+            }}
+          />
+          <IconePesquisa onClick={Pesquisa}>
             <MagnifyingGlass size={18} weight="regular" />
           </IconePesquisa>
         </BarraPesquisa>
