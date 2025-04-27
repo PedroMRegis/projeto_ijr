@@ -1,8 +1,15 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import TopHeader from "@/components/TopHeader"
+import MiddleHeaderLogin from "@/components/MiddleHeaderLogin"
+import Footer from "@/components/Footer"
 
 const CriarConta = () => {
   return (
+    <>
+    <TopHeader/>
+    <MiddleHeaderLogin />
+
     <Container>
       <FormContainer>
         <Titulo>Crie sua conta</Titulo>
@@ -30,6 +37,9 @@ const CriarConta = () => {
         <LinkVoltarLogin to="/login">VOLTAR PARA LOGIN</LinkVoltarLogin>
       </FormContainer>
     </Container>
+
+    <Footer />
+    </>
   )
 }
 

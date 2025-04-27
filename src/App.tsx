@@ -1,26 +1,16 @@
-import React from 'react'
-import styled from "styled-components"
-import {BrowserRouter} from 'react-router-dom'
-import TopHeader from './components/TopHeader'
-import MiddleHeader from '@/components/MiddleHeader'
-import BottomHeader from '@/components/BottomHeader'
-import RoutesConfig from "@/Routes/routes"
-import  Footer  from '@/components/footer'
+import { BrowserRouter } from "react-router-dom";
+import { useState } from "react";
+import RoutesConfig from "@/Routes/routes";
 
 
 function App (){
+  const [termoBusca, setTermoBusca] = useState("");
   return (
     <>
     <BrowserRouter>
-    <TopHeader />
-    <MiddleHeader />
-    <BottomHeader />
-    <RoutesConfig />
+      <RoutesConfig setBusca={setTermoBusca} termoBusca={termoBusca} />
     </BrowserRouter>
 
-
-
-    <Footer />
     </>
   )
 }

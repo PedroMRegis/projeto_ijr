@@ -5,13 +5,26 @@ import CardProduto from "@/components/CardProduto";
 import moveis from "@/data/moveis";
 import ModalDetalhesProduto from "@/components/ModalDetalhesProduto";
 import { Produto } from "@/utils/FiltroProduto";
+import TopHeader from '@/components/TopHeader';
+import MiddleHeader from '@/components/MiddleHeader';
+import BottomHeader from '@/components/BottomHeader';
+import  Footer from "@/components/Footer";
 
-const Moveis = () => {
+type MoveisProps = {
+  setBusca: (valor: string) => void;
+  termoBusca: string;
+};
+
+const Moveis = ({ setBusca, termoBusca }: MoveisProps) => {
   const { setFiltro, produtosFiltrados } = FiltroProduto(moveis);
   const [produtoSelecionado, setProdutoSelecionado] = useState<Produto | null>(null);
 
   return (
     <>
+      <TopHeader />
+      <MiddleHeader setBusca={setBusca} termoBusca={termoBusca} />
+      <BottomHeader />
+      
       <Section>
         <Filtros>
           <button onClick={() => setFiltro("todos")}>Todos</button>
@@ -40,6 +53,7 @@ const Moveis = () => {
           onClose={() => setProdutoSelecionado(null)}
         />
       )}
+      <Footer />
     </>
   );
 };

@@ -1,17 +1,31 @@
 import React, { useState } from 'react'
 import styled from "styled-components"
+import TopHeader from "@/components/TopHeader";
+import MiddleHeader from "@/components/MiddleHeader";
+import BottomHeader from "@/components/BottomHeader";
+import Footer from "@/components/Footer";
 import { FiltroProduto } from "@/utils/FiltroProduto"
 import eletronicos from "@/data/eletronicos"
 import CardProduto from "@/components/CardProduto"
 import ModalDetalhesProduto from "@/components/ModalDetalhesProduto" 
 import { Produto } from "@/utils/FiltroProduto" 
 
-const Eletronicos = () => {
+type EletronicosProps = {
+  setBusca: (valor: string) => void;
+  termoBusca: string;
+};
+
+
+const Eletronicos = ({setBusca,termoBusca}: EletronicosProps) => {
   const { setFiltro, produtosFiltrados } = FiltroProduto(eletronicos)
   const [produtoSelecionado, setProdutoSelecionado] = useState<Produto | null>(null) 
 
   return (
     <>
+      <TopHeader />
+      <MiddleHeader setBusca={setBusca} termoBusca={termoBusca} />
+      <BottomHeader />
+
       <Section>
         <Filtros>
           <button onClick={() => setFiltro("todos")}>Todos</button>
@@ -42,6 +56,7 @@ const Eletronicos = () => {
           onClose={() => setProdutoSelecionado(null)}
         />
       )}
+      <Footer />
     </>
   )
 }

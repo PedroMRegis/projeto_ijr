@@ -1,9 +1,24 @@
+
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import imgBanner from "@/assets/imgprincipalorcamento.png";
+import BottomHeader from "@/components/BottomHeader";
+import MiddleHeader from "@/components/MiddleHeader";
+import TopHeader from "@/components/TopHeader";
+import Footer from "@/components/Footer";
 
-const Contato = () => {
+type OrcamentoProps = {
+  setBusca: (valor: string) => void;
+  termoBusca: string;
+};
+
+const Contato = ({ setBusca, termoBusca }: OrcamentoProps) => {
   return (
+    <>
+    <TopHeader />
+    <MiddleHeader setBusca={setBusca} termoBusca={termoBusca} />
+    <BottomHeader />
+
     <Container>
       <Banner>
         <BannerImagem src={imgBanner} alt="Banner de Contato" />
@@ -77,6 +92,9 @@ const Contato = () => {
         <BotaoEnviar>Enviar</BotaoEnviar>
       </Formulario>
     </Container>
+
+    <Footer />
+    </>
   );
 };
 

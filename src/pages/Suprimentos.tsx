@@ -5,13 +5,28 @@ import CardProduto from "@/components/CardProduto"
 import suprimentos from "@/data/suprimentos"
 import ModalDetalhesProduto from "@/components/ModalDetalhesProduto"
 import { Produto } from "@/utils/FiltroProduto"
+import TopHeader from '@/components/TopHeader'
+import BottomHeader from '@/components/BottomHeader'
+import MiddleHeader from '@/components/MiddleHeader'
+import Footer from '@/components/Footer'
 
-const Suprimentos = () => {
+
+
+type SuprimentosProps = {
+  setBusca: (valor: string) => void;
+  termoBusca: string;
+};
+
+const Suprimentos = ({setBusca, termoBusca}: SuprimentosProps) => {
   const { setFiltro, produtosFiltrados } = FiltroProduto(suprimentos)
   const [produtoSelecionado, setProdutoSelecionado] = useState<Produto | null>(null)
 
   return (
     <>
+      <TopHeader />
+      <MiddleHeader setBusca={setBusca} termoBusca={termoBusca} />
+      <BottomHeader />
+      
       <Section>
         <Filtros>
           <button onClick={() => setFiltro("todos")}>Todos</button>
@@ -40,6 +55,8 @@ const Suprimentos = () => {
           onClose={() => setProdutoSelecionado(null)}
         />
       )}
+
+      <Footer />
     </>
   )
 }
