@@ -1,48 +1,56 @@
+import Footer from "@/components/Footer"
+import MiddleHeaderLogin from "@/components/MiddleHeaderLogin"
+import TopHeader from "@/components/TopHeader"
 import styled from "styled-components"
 
 const PedidoAcompanhamento = () => {
   return (
-    <Container>
-      <Titulo>Acompanhe seu pedido</Titulo>
-      <Subtitulo>Histórico em tempo real</Subtitulo>
+    <>
+      <TopHeader />
+      <MiddleHeaderLogin />
+      <Container>
+        <Titulo>Acompanhe seu pedido</Titulo>
+        <Subtitulo>Histórico em tempo real</Subtitulo>
 
-      <LinhaDoTempo>
-        <Coluna>
-          <Item>
-            <Bolinha ativa />
-            <TextoEtapa>Pagamento em análise</TextoEtapa>
-          </Item>
+        <LinhaDoTempo>
+          <Coluna>
+            <Item>
+              <Bolinha ativa />
+              <TextoEtapa>Pagamento em análise</TextoEtapa>
+            </Item>
 
-          <LinhaLigacao />
+            <LinhaLigacao />
 
-          <Item>
-            <Bolinha ativa />
-            <TextoEtapa>Pagamento confirmado</TextoEtapa>
-          </Item>
+            <Item>
+              <Bolinha ativa />
+              <TextoEtapa>Pagamento confirmado</TextoEtapa>
+            </Item>
 
-          <LinhaLigacao />
+            <LinhaLigacao />
 
-          <Item>
-            <Bolinha ativa />
-            <TextoEtapa>Preparando o pedido</TextoEtapa>
-          </Item>
+            <Item>
+              <Bolinha ativa />
+              <TextoEtapa>Preparando o pedido</TextoEtapa>
+            </Item>
 
-          <LinhaLigacao />
+            <LinhaLigacao />
 
-          <Item>
-            <Bolinha />
-            <TextoEtapa>Pedido à caminho</TextoEtapa>
-          </Item>
+            <Item>
+              <Bolinha />
+              <TextoEtapa>Pedido à caminho</TextoEtapa>
+            </Item>
 
-          <LinhaLigacao />
+            <LinhaLigacao />
 
-          <Item>
-            <Bolinha />
-            <TextoEtapa>Chegou ao destino</TextoEtapa>
-          </Item>
-        </Coluna>
-      </LinhaDoTempo>
-    </Container>
+            <Item>
+              <Bolinha />
+              <TextoEtapa>Chegou ao destino</TextoEtapa>
+            </Item>
+          </Coluna>
+        </LinhaDoTempo>
+      </Container>
+      <Footer />
+    </>
   )
 }
 

@@ -2,6 +2,9 @@ import { useState } from "react"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 import EtapasCarrinho from "@/components/EtapasCarrinho" 
+import MiddleHeaderLogin from "@/components/MiddleHeaderLogin"
+import TopHeader from "@/components/TopHeader"
+import Footer from "@/components/Footer"
 
 const Pagamento = () => {
   const [formaPagamento, setFormaPagamento] = useState("")
@@ -26,124 +29,130 @@ const Pagamento = () => {
   }
 
   return (
-    <Container>
-      <EtapasCarrinho etapaAtual={4} />
+    <>
+      <TopHeader />
+      <MiddleHeaderLogin />
+      <Container>
+        <EtapasCarrinho etapaAtual={4} />
 
-      <Conteudo>
-        <FormularioPagamento>
-          <Titulo>Escolha a forma de pagamento</Titulo>
+        <Conteudo>
+          <FormularioPagamento>
+            <Titulo>Escolha a forma de pagamento</Titulo>
 
-          <Opcoes>
-            <Opcao>
-              <input
-                type="radio"
-                id="cartao"
-                name="pagamento"
-                checked={formaPagamento === "cartao"}
-                onChange={() => setFormaPagamento("cartao")}
-              />
-              <label htmlFor="cartao">Cartão de Crédito</label>
-            </Opcao>
-            <Opcao>
-              <input
-                type="radio"
-                id="pix"
-                name="pagamento"
-                checked={formaPagamento === "pix"}
-                onChange={() => setFormaPagamento("pix")}
-              />
-              <label htmlFor="pix">Pix</label>
-            </Opcao>
-            <Opcao>
-              <input
-                type="radio"
-                id="applepay"
-                name="pagamento"
-                checked={formaPagamento === "applepay"}
-                onChange={() => setFormaPagamento("applepay")}
-              />
-              <label htmlFor="applepay">Apple Pay</label>
-            </Opcao>
-          </Opcoes>
+            <Opcoes>
+              <Opcao>
+                <input
+                  type="radio"
+                  id="cartao"
+                  name="pagamento"
+                  checked={formaPagamento === "cartao"}
+                  onChange={() => setFormaPagamento("cartao")}
+                />
+                <label htmlFor="cartao">Cartão de Crédito</label>
+              </Opcao>
+              <Opcao>
+                <input
+                  type="radio"
+                  id="pix"
+                  name="pagamento"
+                  checked={formaPagamento === "pix"}
+                  onChange={() => setFormaPagamento("pix")}
+                />
+                <label htmlFor="pix">Pix</label>
+              </Opcao>
+              <Opcao>
+                <input
+                  type="radio"
+                  id="applepay"
+                  name="pagamento"
+                  checked={formaPagamento === "applepay"}
+                  onChange={() => setFormaPagamento("applepay")}
+                />
+                <label htmlFor="applepay">Apple Pay</label>
+              </Opcao>
+            </Opcoes>
 
-          {formaPagamento === "cartao" && (
-            <CamposCartao>
-              <Input
-                type="text"
-                placeholder="Número do cartão"
-                value={numeroCartao}
-                onChange={(e) => setNumeroCartao(e.target.value)}
-              />
-              <Input
-                type="text"
-                placeholder="Nome do titular"
-                value={nomeTitular}
-                onChange={(e) => setNomeTitular(e.target.value)}
-              />
-              <LinhaDuasColunas>
+            {formaPagamento === "cartao" && (
+              <CamposCartao>
                 <Input
                   type="text"
-                  placeholder="Validade (MM/AA)"
-                  value={validade}
-                  onChange={(e) => setValidade(e.target.value)}
+                  placeholder="Número do cartão"
+                  value={numeroCartao}
+                  onChange={(e) => setNumeroCartao(e.target.value)}
                 />
                 <Input
                   type="text"
-                  placeholder="CVV"
-                  value={cvv}
-                  onChange={(e) => setCvv(e.target.value)}
+                  placeholder="Nome do titular"
+                  value={nomeTitular}
+                  onChange={(e) => setNomeTitular(e.target.value)}
                 />
-              </LinhaDuasColunas>
-            </CamposCartao>
-          )}
+                <LinhaDuasColunas>
+                  <Input
+                    type="text"
+                    placeholder="Validade (MM/AA)"
+                    value={validade}
+                    onChange={(e) => setValidade(e.target.value)}
+                  />
+                  <Input
+                    type="text"
+                    placeholder="CVV"
+                    value={cvv}
+                    onChange={(e) => setCvv(e.target.value)}
+                  />
+                </LinhaDuasColunas>
+              </CamposCartao>
+            )}
 
-          {formaPagamento === "pix" && (
-            <PixArea>
-              <MensagemPix>Pix gerado! Aguarde a confirmação do pagamento.</MensagemPix>
-            </PixArea>
-          )}
+            {formaPagamento === "pix" && (
+              <PixArea>
+                <MensagemPix>Pix gerado! Aguarde a confirmação do pagamento.</MensagemPix>
+              </PixArea>
+            )}
 
-          {formaPagamento === "applepay" && (
-            <ApplePayArea>
-              <p>Você será redirecionado para finalizar via Apple Pay.</p>
-            </ApplePayArea>
-          )}
+            {formaPagamento === "applepay" && (
+              <ApplePayArea>
+                <p>Você será redirecionado para finalizar via Apple Pay.</p>
+              </ApplePayArea>
+            )}
 
-          <BotaoFinalizar
-            to={podeFinalizarCompra() ? "/pedido-acompanhamento" : "#"}
-            $desabilitado={!podeFinalizarCompra()}
-            onClick={(e) => {
-              if (!podeFinalizarCompra()) {
-                e.preventDefault()
-              }
-            }}
-          >
-            FINALIZAR COMPRA
-          </BotaoFinalizar>
-        </FormularioPagamento>
+            <BotaoFinalizar
+              to={podeFinalizarCompra() ? "/pedido-acompanhamento" : "#"}
+              $desabilitado={!podeFinalizarCompra()}
+              onClick={(e) => {
+                if (!podeFinalizarCompra()) {
+                  e.preventDefault()
+                }
+              }}
+            >
+              FINALIZAR COMPRA
+            </BotaoFinalizar>
+          </FormularioPagamento>
 
-        <ResumoCompra>
-          <TituloResumo>Resumo da compra</TituloResumo>
-          <LinhaResumo>
-            <span>Produtos:</span>
-            <span>R$ 000,00</span>
-          </LinhaResumo>
-          <LinhaResumo>
-            <span>Frete:</span>
-            <span>R$ 000,00</span>
-          </LinhaResumo>
-          <LinhaResumo>
-            <span>Desconto:</span>
-            <span>R$ 000,00</span>
-          </LinhaResumo>
-          <LinhaSeparadora />
-          <LinhaResumo negrito>
-            <span>Total:</span>
-            <span>R$ 0.000,00</span>
-          </LinhaResumo>
-        </ResumoCompra>
-      </Conteudo>
-    </Container>
+          <ResumoCompra>
+            <TituloResumo>Resumo da compra</TituloResumo>
+            <LinhaResumo>
+              <span>Produtos:</span>
+              <span>R$ 000,00</span>
+            </LinhaResumo>
+            <LinhaResumo>
+              <span>Frete:</span>
+              <span>R$ 000,00</span>
+            </LinhaResumo>
+            <LinhaResumo>
+              <span>Desconto:</span>
+              <span>R$ 000,00</span>
+            </LinhaResumo>
+            <LinhaSeparadora />
+            <LinhaResumo negrito>
+              <span>Total:</span>
+              <span>R$ 0.000,00</span>
+            </LinhaResumo>
+          </ResumoCompra>
+        </Conteudo>
+      </Container>
+      
+      <Footer />
+    </>
   )
 }
 

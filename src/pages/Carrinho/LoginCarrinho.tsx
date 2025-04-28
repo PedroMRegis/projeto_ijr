@@ -1,6 +1,9 @@
 import styled from "styled-components"
 import { Link, useNavigate } from "react-router-dom"
 import EtapasCarrinho from "@/components/EtapasCarrinho"
+import TopHeader from "@/components/TopHeader"
+import MiddleHeaderLogin from "@/components/MiddleHeaderLogin"
+import Footer from "@/components/Footer"
 
 const LoginCarrinho = () => {
   const navigate = useNavigate()
@@ -11,6 +14,9 @@ const LoginCarrinho = () => {
   }
 
   return (
+    <>
+    <TopHeader />
+    <MiddleHeaderLogin />
     <Container>
       <EtapasCarrinho etapaAtual={2} /> 
 
@@ -34,6 +40,8 @@ const LoginCarrinho = () => {
         <LinkCriarConta to="/criar-conta">CRIAR CONTA</LinkCriarConta>
       </FormContainer>
     </Container>
+    <Footer />
+    </>
   )
 }
 
