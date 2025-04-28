@@ -24,7 +24,7 @@ const Home = ({ setBusca, termoBusca }: HomeProps) => {
 
       <Container>
         <Conteudo>
-          <Titulo>30% OFF</Titulo>
+          <Titulo>PRECISAMOS MUDAR ISSO</Titulo>
           <Texto>Itens e kits para transformar<br />seu espaço de trabalho!</Texto>
           <Subtexto>ou realize seu orçamento diretamente com a gente!</Subtexto>
           <Botao href="/orcamento">ENTRE EM CONTATO</Botao>
@@ -77,6 +77,7 @@ const Container = styled.section`
 const Conteudo = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
   padding: 2rem;
+  
   border-radius: 0.5rem;
 `
 

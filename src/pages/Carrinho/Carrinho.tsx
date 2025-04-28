@@ -23,10 +23,14 @@ const Carrinho = () => {
       if (produto.quantidade > 1) {
         adicionarAoCarrinho(produto, -1)
       } else {
-        removerDoCarrinho(id);
+        removerDoCarrinho(id)
       }
     }
   }
+
+  const subtotal = carrinho.reduce((total, item) => {
+    return total + item.precoPor * item.quantidade
+  }, 0)
 
   return (
     <>
@@ -46,6 +50,7 @@ const Carrinho = () => {
         ) : (
           <CarrinhoCheio>
             <Titulo>Meu carrinho</Titulo>
+
             {carrinho.map((item) => (
               <Produto key={item.id}>
                 <ImagemProduto src={item.imagem} alt={item.nome} />
@@ -71,6 +76,12 @@ const Carrinho = () => {
               </Produto>
             ))}
 
+
+            <SubtotalArea>
+              <span>Subtotal:</span>
+              <ValorSubtotal>R$ {subtotal.toFixed(2)}</ValorSubtotal>
+            </SubtotalArea>
+
             <BotoesCarrinho>
               <BotaoEscolherItens to="/">ADICIONAR MAIS ITENS</BotaoEscolherItens>
               <BotaoAvancar to="/login-carrinho">AVANÇAR</BotaoAvancar>
@@ -84,7 +95,7 @@ const Carrinho = () => {
   )
 }
 
-export default Carrinho;
+export default Carrinho
 
 const Container = styled.section`
   padding: 2rem;
@@ -95,6 +106,8 @@ const Container = styled.section`
 const CarrinhoVazio = styled.div`
   text-align: center;
   background: white;
+  max-width: 1000px;
+  margin: 0 auto;
   padding: 3rem;
   border-radius: 8px;
 
@@ -129,10 +142,6 @@ const Produto = styled.div`
   padding: 1.5rem 0;
   border-bottom: 1px solid #e0e0e0;
   gap: 1rem;
-
-  &:last-child {
-    border-bottom: none;
-  }
 `
 
 const ImagemProduto = styled.img`
@@ -172,6 +181,21 @@ const BotaoRemover = styled.button`
   cursor: pointer;
   margin-left: 1rem;
   color: black;
+`
+
+
+
+const SubtotalArea = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  padding-top: 1.3rem ;
+`
+
+const ValorSubtotal = styled.span`
+  color: #023e8a;
 `
 
 const BotoesCarrinho = styled.div`
