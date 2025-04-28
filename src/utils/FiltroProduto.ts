@@ -1,13 +1,15 @@
 import { useState } from "react"
 
 export type Produto = {
+  id: number      
   imagem: string
   nome: string
-  precoDe?: string
-  precoPor: string
+  precoDe?: number   
+  precoPor: number
   tipo: string
   descricao: string
-}
+  quantidade?: number;  
+};
 
 export function FiltroProduto(lista: Produto[]) {
   const [filtro, setFiltro] = useState("todos")
