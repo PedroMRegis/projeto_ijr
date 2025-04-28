@@ -39,7 +39,6 @@ const Pagina = () => {
     <Container>
       <TopHeader />
       <MiddleHeader setBusca={setBusca} termoBusca={busca} />
-
       <Content>
         <FormSection>
           <Input type="text" placeholder="Inserir título da promoção" />
@@ -48,11 +47,9 @@ const Pagina = () => {
             <Plus size={32} /> Novo upload de imagem
           </UploadButton>
         </FormSection>
-
         <Section title="Editar Eletrônicos" items={eletronicos} />
         <Section title="Editar Móveis" items={moveis} />
         <Section title="Editar Suprimentos" items={suprimentos} />
-
         <EditInfo>
           Clique no ícone de lápis para editar as informações
         </EditInfo>
@@ -76,7 +73,6 @@ const Section = ({ title, items }: { title: string; items: string[] }) => (
   </>
 );
 
-// Styled Components
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -91,6 +87,10 @@ const Content = styled.main`
   align-items: center;
   padding: 40px 20px;
   gap: 30px;
+  @media (max-width: 600px) {
+    padding: 20px 10px;
+    gap: 20px;
+  }
 `;
 
 const FormSection = styled.div`
@@ -99,12 +99,16 @@ const FormSection = styled.div`
   gap: 15px;
   width: 100%;
   max-width: 500px;
+  @media (max-width: 600px) {
+    max-width: 100%;
+  }
 `;
 
 const Textarea = styled.textarea`
   padding: 10px;
   font-size: 16px;
   height: 100px;
+  resize: vertical;
 `;
 
 const UploadButton = styled.button`
@@ -119,7 +123,6 @@ const UploadButton = styled.button`
   border: none;
   border-radius: 8px;
   cursor: pointer;
-
   &:hover {
     background-color: #218838;
   }
@@ -129,6 +132,9 @@ const SectionTitle = styled.h2`
   font-size: 22px;
   color: #023e8a;
   margin-top: 20px;
+  @media (max-width: 600px) {
+    font-size: 20px;
+  }
 `;
 
 const ProductList = styled.div`
@@ -138,6 +144,9 @@ const ProductList = styled.div`
   flex-direction: column;
   gap: 12px;
   text-align: left;
+  @media (max-width: 600px) {
+    max-width: 100%;
+  }
 `;
 
 const ProductItem = styled.div`
@@ -155,4 +164,7 @@ const EditInfo = styled.p`
   color: #555;
   margin-top: 20px;
   text-align: center;
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
 `;
