@@ -35,17 +35,29 @@ const Header = styled.header`
   flex-wrap: wrap;
   background-color: #023e8a;
   color: white;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem 1rem;
+  }
 `
 
 const LeftSection = styled.div`
   display: flex;
   align-items: center;
   gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
 `
 
 const RightSection = styled.div`
   display: flex;
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
 `
 
 const InfoItem = styled.div`

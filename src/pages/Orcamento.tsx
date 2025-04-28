@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import imgBanner from "@/assets/imgprincipalorcamento.png";
@@ -15,85 +14,85 @@ type OrcamentoProps = {
 const Contato = ({ setBusca, termoBusca }: OrcamentoProps) => {
   return (
     <>
-    <TopHeader />
-    <MiddleHeader setBusca={setBusca} termoBusca={termoBusca} />
-    <BottomHeader />
+      <TopHeader />
+      <MiddleHeader setBusca={setBusca} termoBusca={termoBusca} />
+      <BottomHeader />
 
-    <Container>
-      <Banner>
-        <BannerImagem src={imgBanner} alt="Banner de Contato" />
-        <BannerTexto>
-          <h1>Estamos prontos para te ajudar</h1>
-          <BotaoWhatsapp href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer">
-            Converse conosco via WhatsApp
-          </BotaoWhatsapp>
-        </BannerTexto>
-      </Banner>
-      
-      <Intro>
-        <Titulo>
-          <strong>Compartilhe seu desafio</strong> e receba uma solução personalizada.
-        </Titulo>
-      </Intro>
+      <Container>
+        <Banner>
+          <BannerImagem src={imgBanner} alt="Banner de Contato" />
+          <BannerTexto>
+            <h1>Estamos prontos para te ajudar</h1>
+            <BotaoWhatsapp href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer">
+              Converse conosco via WhatsApp
+            </BotaoWhatsapp>
+          </BannerTexto>
+        </Banner>
 
-      <Formulario>
-        <Linha>
-          <Input placeholder="Nome*" />
-          <Input placeholder="Telefone*" />
-        </Linha>
-        <Linha>
-          <Input placeholder="Email corporativo*" />
-          <Input placeholder="Empresa*" />
-        </Linha>
-        <Linha>
-          <Select>
-            <option value="">Segmento*</option>
-            <option value="TI">Tecnologia da Informação</option>
-            <option value="Financeiro">Financeiro</option>
-            <option value="Logistica">Logística</option>
-          </Select>
-          <Select>
-            <option value="">Departamento*</option>
-            <option value="RH">Recursos Humanos</option>
-            <option value="TI">TI</option>
-            <option value="Marketing">Marketing</option>
-          </Select>
-        </Linha>
-        <Linha>
-          <Select>
-            <option value="">Cargo*</option>
-            <option value="Analista">Analista</option>
-            <option value="Coordenador">Coordenador</option>
-            <option value="Diretor">Diretor</option>
-          </Select>
-          <Select>
-            <option value="">Qual o porte da empresa?*</option>
-            <option value="pequena">Pequena</option>
-            <option value="media">Média</option>
-            <option value="grande">Grande</option>
-          </Select>
-        </Linha>
-        <Linha>
-          <Input placeholder="Como podemos ajudar?*" />
-          <Select>
-            <option value="">Solução de interesse*</option>
-            <option value="cloud">Cloud & Data Center</option>
-            <option value="seguranca">Segurança da Informação</option>
-            <option value="automacao">Automação de Processos</option>
-          </Select>
-        </Linha>
+        <Intro>
+          <Titulo>
+            <strong>Compartilhe seu desafio</strong> e receba uma solução personalizada.
+          </Titulo>
+        </Intro>
 
-        <Consentimento>
-          <label>
-            <input type="checkbox" /> Concordo em permitir que a empresa armazene e processe meus dados pessoais.
-          </label>
-        </Consentimento>
+        <Formulario>
+          <Linha>
+            <Input placeholder="Nome*" />
+            <Input placeholder="Telefone*" />
+          </Linha>
+          <Linha>
+            <Input placeholder="Email corporativo*" />
+            <Input placeholder="Empresa*" />
+          </Linha>
+          <Linha>
+            <Select>
+              <option value="">Segmento*</option>
+              <option value="TI">Tecnologia da Informação</option>
+              <option value="Financeiro">Financeiro</option>
+              <option value="Logistica">Logística</option>
+            </Select>
+            <Select>
+              <option value="">Departamento*</option>
+              <option value="RH">Recursos Humanos</option>
+              <option value="TI">TI</option>
+              <option value="Marketing">Marketing</option>
+            </Select>
+          </Linha>
+          <Linha>
+            <Select>
+              <option value="">Cargo*</option>
+              <option value="Analista">Analista</option>
+              <option value="Coordenador">Coordenador</option>
+              <option value="Diretor">Diretor</option>
+            </Select>
+            <Select>
+              <option value="">Qual o porte da empresa?*</option>
+              <option value="pequena">Pequena</option>
+              <option value="media">Média</option>
+              <option value="grande">Grande</option>
+            </Select>
+          </Linha>
+          <Linha>
+            <Input placeholder="Como podemos ajudar?*" />
+            <Select>
+              <option value="">Solução de interesse*</option>
+              <option value="cloud">Cloud & Data Center</option>
+              <option value="seguranca">Segurança da Informação</option>
+              <option value="automacao">Automação de Processos</option>
+            </Select>
+          </Linha>
 
-        <BotaoEnviar>Enviar</BotaoEnviar>
-      </Formulario>
-    </Container>
+          <Consentimento>
+            <label>
+              <input type="checkbox" /> Concordo em permitir que a empresa armazene e processe meus dados pessoais.
+            </label>
+          </Consentimento>
 
-    <Footer />
+          <BotaoEnviar>Enviar</BotaoEnviar>
+        </Formulario>
+      </Container>
+
+      <Footer />
     </>
   );
 };
@@ -224,10 +223,12 @@ const BotaoEnviar = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 1rem;
 
   @media (max-width: 768px) {
     width: 80%;
-    margin: 0 auto;
+    margin: 1rem auto 0;
+    display: block;
   }
 `;
 
