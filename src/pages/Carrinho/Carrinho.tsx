@@ -1,104 +1,90 @@
 import styled from "styled-components"
 import { ShoppingCart, Trash, Minus, Plus } from "@phosphor-icons/react"
 import { Link } from "react-router-dom"
-import { useState } from "react"
-import EtapasCarrinho from "@/components/EtapasCarrinho" 
+import EtapasCarrinho from "@/components/EtapasCarrinho"
 import TopHeader from "@/components/TopHeader"
 import MiddleHeaderLogin from "@/components/MiddleHeaderLogin"
 import Footer from "@/components/Footer"
-
-const produtosCarrinho = [
-  {
-    id: 1,
-    nome: "Mouse HP USB",
-    imagem: "/src/assets/mouse.png",
-    preco: 36.99,
-    quantidade: 1
-  },
-  {
-    id: 2,
-    nome: "Monitor LG 22",
-    imagem: "/src/assets/monitor_lg.png",
-    preco: 759.00,
-    quantidade: 1
-  }
-]
+import { useCart } from "@/contexts/CartContext"
 
 const Carrinho = () => {
-  const [itens, setItens] = useState(produtosCarrinho)
+  const { carrinho, adicionarAoCarrinho, removerDoCarrinho } = useCart()
 
   const aumentarQuantidade = (id: number) => {
-    setItens(prev =>
-      prev.map(item =>
-        item.id === id ? { ...item, quantidade: item.quantidade + 1 } : item
-      )
-    )
+    const produto = carrinho.find((item) => item.id === id)
+    if (produto) {
+      adicionarAoCarrinho(produto, 1)
+    }
   }
 
   const diminuirQuantidade = (id: number) => {
-    setItens(prev =>
-      prev.map(item =>
-        item.id === id && item.quantidade > 1
-          ? { ...item, quantidade: item.quantidade - 1 }
-          : item
-      )
-    )
-  }
-
-  const removerItem = (id: number) => {
-    setItens(prev => prev.filter(item => item.id !== id))
+    const produto = carrinho.find((item) => item.id === id)
+    if (produto) {
+      if (produto.quantidade > 1) {
+        adicionarAoCarrinho(produto, -1)
+      } else {
+        removerDoCarrinho(id);
+      }
+    }
   }
 
   return (
     <>
-    <TopHeader/>
-    <MiddleHeaderLogin />
-    
-    <Container>
-      <EtapasCarrinho etapaAtual={1} /> 
+      <TopHeader />
+      <MiddleHeaderLogin />
 
-      {itens.length === 0 ? (
-        <CarrinhoVazio>
-          <ShoppingCart size={64} />
-          <h2>Seu carrinho está vazio</h2>
-          <p>Para continuar o processo de compra, navegue pelo site e adicione produtos ao carrinho</p>
-          <BotaoEscolherItens to="/">ESCOLHER ITENS</BotaoEscolherItens>
-        </CarrinhoVazio>
-      ) : (
-        <CarrinhoCheio>
-          <Titulo>Meu carrinho</Titulo>
-          {itens.map(item => (
-            <Produto key={item.id}>
-              <ImagemProduto src={item.imagem} alt={item.nome} />
-              <NomeProduto>{item.nome}</NomeProduto>
-              <QuantidadeControle>
-                <BotaoQuantidade onClick={() => diminuirQuantidade(item.id)}>
-                  <Minus size={16} />
-                </BotaoQuantidade>
-                <span>{item.quantidade}</span>
-                <BotaoQuantidade onClick={() => aumentarQuantidade(item.id)}>
-                  <Plus size={16} />
-                </BotaoQuantidade>
-              </QuantidadeControle>
-              <PrecoProduto>R$ {(item.preco * item.quantidade).toFixed(2)}</PrecoProduto>
-              <BotaoRemover onClick={() => removerItem(item.id)}>
-                <Trash size={24} />
-              </BotaoRemover>
-            </Produto>
-          ))}
-          <BotoesCarrinho>
-            <BotaoEscolherItens to="/">ADICIONAR MAIS ITENS</BotaoEscolherItens>
-            <BotaoAvancar to="/login-carrinho">AVANÇAR</BotaoAvancar>
-          </BotoesCarrinho>
-        </CarrinhoCheio>
-      )}
-    </Container>
-    <Footer />
+      <Container>
+        <EtapasCarrinho etapaAtual={1} />
+
+        {carrinho.length === 0 ? (
+          <CarrinhoVazio>
+            <ShoppingCart size={64} />
+            <h2>Seu carrinho está vazio</h2>
+            <p>Para continuar o processo de compra, navegue pelo site e adicione produtos ao carrinho</p>
+            <BotaoEscolherItens to="/">ESCOLHER ITENS</BotaoEscolherItens>
+          </CarrinhoVazio>
+        ) : (
+          <CarrinhoCheio>
+            <Titulo>Meu carrinho</Titulo>
+            {carrinho.map((item) => (
+              <Produto key={item.id}>
+                <ImagemProduto src={item.imagem} alt={item.nome} />
+                <NomeProduto>{item.nome}</NomeProduto>
+
+                <QuantidadeControle>
+                  <BotaoQuantidade onClick={() => diminuirQuantidade(item.id)}>
+                    <Minus size={16} />
+                  </BotaoQuantidade>
+                  <span>{item.quantidade}</span>
+                  <BotaoQuantidade onClick={() => aumentarQuantidade(item.id)}>
+                    <Plus size={16} />
+                  </BotaoQuantidade>
+                </QuantidadeControle>
+
+                <PrecoProduto>
+                  R$ {(item.precoPor * item.quantidade).toFixed(2)}
+                </PrecoProduto>
+
+                <BotaoRemover onClick={() => removerDoCarrinho(item.id)}>
+                  <Trash size={24} />
+                </BotaoRemover>
+              </Produto>
+            ))}
+
+            <BotoesCarrinho>
+              <BotaoEscolherItens to="/">ADICIONAR MAIS ITENS</BotaoEscolherItens>
+              <BotaoAvancar to="/login-carrinho">AVANÇAR</BotaoAvancar>
+            </BotoesCarrinho>
+          </CarrinhoCheio>
+        )}
+      </Container>
+
+      <Footer />
     </>
   )
 }
 
-export default Carrinho
+export default Carrinho;
 
 const Container = styled.section`
   padding: 2rem;
@@ -111,10 +97,12 @@ const CarrinhoVazio = styled.div`
   background: white;
   padding: 3rem;
   border-radius: 8px;
+
   h2 {
     margin-top: 1rem;
     color: #023e8a;
   }
+
   p {
     margin: 1rem 0 2rem;
     color: #555;
@@ -125,7 +113,7 @@ const CarrinhoCheio = styled.div`
   background: white;
   padding: 2rem;
   border-radius: 8px;
-  max-width: 1000px; 
+  max-width: 1000px;
   margin: 0 auto;
 `
 

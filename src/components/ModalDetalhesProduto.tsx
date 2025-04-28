@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Produto } from "@/utils/FiltroProduto";
 import { X, Minus, Plus } from "@phosphor-icons/react"; // pesquisei e achei a biblioteca Phosphor Icons, que é uma biblioteca de ícones para React, peguei dela o X, + e -.
 import { useState } from "react"; // usei o usestate para controlar a quantidade de produtos que o usuário quer adicionar ao carrinho (serve para atualizar o estado das variáveis) e para criar essas variáveis.
+import { useCart } from "@/contexts/CartContext"; // importei o hook que criamos para adicionar o produto ao carrinho
 
 type ModalDetalhesProdutoProps = {
   produto: Produto;
@@ -10,6 +11,9 @@ type ModalDetalhesProdutoProps = {
 
 const ModalDetalhesProduto = ({ produto, onClose }: ModalDetalhesProdutoProps) => {
   const [quantidade, setQuantidade] = useState(1);
+  const [mensagemVisivel, setMensagemVisivel] = useState(false);
+
+  const { adicionarAoCarrinho } = useCart();
 
   const aumentarQuantidade = () => {
     setQuantidade((qtd) => qtd + 1);
@@ -19,6 +23,12 @@ const ModalDetalhesProduto = ({ produto, onClose }: ModalDetalhesProdutoProps) =
     if (quantidade > 1) {
       setQuantidade((qtd) => qtd - 1);
     }
+  };
+
+  const handleAdicionarProduto = () => {
+    adicionarAoCarrinho(produto, quantidade);
+    setMensagemVisivel(true);
+    setTimeout(() => setMensagemVisivel(false), 3000);
   };
 
   return (
@@ -51,9 +61,17 @@ const ModalDetalhesProduto = ({ produto, onClose }: ModalDetalhesProdutoProps) =
               </BotaoContador>
             </Contador>
 
-            <BotaoComprar>Adicionar {quantidade} ao Carrinho</BotaoComprar>
+            <BotaoComprar onClick={handleAdicionarProduto}>
+              Adicionar {quantidade} ao Carrinho
+            </BotaoComprar>
           </Info>
         </Conteudo>
+
+        {mensagemVisivel && (
+          <MensagemAdicionado>
+            Produto adicionado ao carrinho!
+          </MensagemAdicionado>
+        )}
       </ModalContainer>
     </Overlay>
   );
@@ -227,5 +245,29 @@ const BotaoComprar = styled.button`
 
   @media (max-width: 768px) {
     width: 80%;
+  }
+`;
+
+const MensagemAdicionado = styled.div`
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #023e8a;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  animation: fadeIn 0.5s ease-in-out;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 `;
