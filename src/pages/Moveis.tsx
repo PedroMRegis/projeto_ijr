@@ -65,9 +65,6 @@ const Section = styled.section`
   display: flex;
   gap: 2rem;
   padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -86,7 +83,6 @@ const Filtros = styled.div`
   background-color: #f0f0f0;
   padding: 1rem;
   margin-top: 3rem;
-  width: 250px;
 
   button {
     background: #023e8a;
@@ -121,7 +117,6 @@ const AreaProdutos = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  width: 100%;
 `;
 
 const SectionTitulo = styled.h2`
@@ -140,7 +135,6 @@ const GridProdutos = styled.div`
   padding: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
-  width: 100%;
 
   @media (max-width: 768px) {
     padding: 1rem;

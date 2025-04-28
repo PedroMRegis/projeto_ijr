@@ -24,10 +24,10 @@ const Home = ({ setBusca, termoBusca }: HomeProps) => {
 
       <Container>
         <Conteudo>
-          <Titulo>PRECISAMOS MUDAR ISSO</Titulo>
-          <Texto>Itens e kits para transformar<br />seu espaço de trabalho!</Texto>
-          <Subtexto>ou realize seu orçamento diretamente com a gente!</Subtexto>
-          <Botao href="/orcamento">ENTRE EM CONTATO</Botao>
+          <Titulo>Soluções inteligentes para o seu escritório</Titulo>
+          <Texto>Organize seu espaço de trabalho com qualidade e eficiência!</Texto>
+          <Subtexto>Solicite seu orçamento personalizado com a nossa equipe especializada.</Subtexto>
+          <Botao href="/orcamento">SOLICITAR ORÇAMENTO</Botao>
         </Conteudo>
       </Container>
 
