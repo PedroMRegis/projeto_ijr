@@ -8,7 +8,7 @@ import { Produto } from "@/utils/FiltroProduto";
 import TopHeader from '@/components/TopHeader';
 import MiddleHeader from '@/components/MiddleHeader';
 import BottomHeader from '@/components/BottomHeader';
-import  Footer from "@/components/Footer";
+import Footer from "@/components/Footer";
 
 type MoveisProps = {
   setBusca: (valor: string) => void;
@@ -53,6 +53,7 @@ const Moveis = ({ setBusca, termoBusca }: MoveisProps) => {
           onClose={() => setProdutoSelecionado(null)}
         />
       )}
+      
       <Footer />
     </>
   );
@@ -64,10 +65,14 @@ const Section = styled.section`
   display: flex;
   gap: 2rem;
   padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 
   @media (max-width: 768px) {
     flex-direction: column;
     padding: 1rem;
+    max-width: 100%;
   }
 `;
 
@@ -81,6 +86,7 @@ const Filtros = styled.div`
   background-color: #f0f0f0;
   padding: 1rem;
   margin-top: 3rem;
+  width: 250px;
 
   button {
     background: #023e8a;
@@ -97,6 +103,7 @@ const Filtros = styled.div`
   }
 
   @media (max-width: 768px) {
+    width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -114,6 +121,7 @@ const AreaProdutos = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+  width: 100%;
 `;
 
 const SectionTitulo = styled.h2`
@@ -121,6 +129,10 @@ const SectionTitulo = styled.h2`
   font-weight: bold;
   margin-bottom: 1rem;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const GridProdutos = styled.div`
@@ -128,6 +140,7 @@ const GridProdutos = styled.div`
   padding: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
+  width: 100%;
 
   @media (max-width: 768px) {
     padding: 1rem;
