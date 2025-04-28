@@ -1,9 +1,15 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 import EtapasCarrinho from "@/components/EtapasCarrinho" 
+import Footer from "@/components/Footer"
+import MiddleHeaderLogin from "@/components/MiddleHeaderLogin"
+import TopHeader from "@/components/TopHeader"
 
 const Entrega = () => {
   return (
+    <>
+    <TopHeader />
+    <MiddleHeaderLogin />
     <Container>
       <EtapasCarrinho etapaAtual={3} /> 
 
@@ -25,6 +31,8 @@ const Entrega = () => {
         <BotaoAvancar to="/pagamento">AVANÇAR</BotaoAvancar>
       </FormContainer>
     </Container>
+    <Footer />
+    </>
   )
 }
 

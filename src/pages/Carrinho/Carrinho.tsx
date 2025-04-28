@@ -3,6 +3,9 @@ import { ShoppingCart, Trash, Minus, Plus } from "@phosphor-icons/react"
 import { Link } from "react-router-dom"
 import { useState } from "react"
 import EtapasCarrinho from "@/components/EtapasCarrinho" 
+import TopHeader from "@/components/TopHeader"
+import MiddleHeaderLogin from "@/components/MiddleHeaderLogin"
+import Footer from "@/components/Footer"
 
 const produtosCarrinho = [
   {
@@ -47,6 +50,10 @@ const Carrinho = () => {
   }
 
   return (
+    <>
+    <TopHeader/>
+    <MiddleHeaderLogin />
+    
     <Container>
       <EtapasCarrinho etapaAtual={1} /> 
 
@@ -86,6 +93,8 @@ const Carrinho = () => {
         </CarrinhoCheio>
       )}
     </Container>
+    <Footer />
+    </>
   )
 }
 

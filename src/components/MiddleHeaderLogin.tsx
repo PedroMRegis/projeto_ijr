@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "@/assets/logo_loja.jpg";
 
-const MiddleHeader = () => {
+const MiddleHeaderLogin = () => {
   const navigate = useNavigate();
 
   return (
@@ -16,7 +16,7 @@ const MiddleHeader = () => {
   );
 };
 
-export default MiddleHeader;
+export default MiddleHeaderLogin;
 
 const Container = styled.div`
   position: relative;

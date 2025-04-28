@@ -54,7 +54,6 @@ const Home = ({ setBusca, termoBusca }: HomeProps) => {
 
     <Footer />
 
-
     </>
   )
 }
