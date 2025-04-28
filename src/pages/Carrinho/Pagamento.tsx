@@ -1,10 +1,11 @@
 import { useState } from "react"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
-import EtapasCarrinho from "@/components/EtapasCarrinho" 
+import EtapasCarrinho from "@/components/EtapasCarrinho"
 import MiddleHeaderLogin from "@/components/MiddleHeaderLogin"
 import TopHeader from "@/components/TopHeader"
 import Footer from "@/components/Footer"
+import { useCart } from "@/contexts/CartContext"
 
 const Pagamento = () => {
   const [formaPagamento, setFormaPagamento] = useState("")
@@ -12,6 +13,12 @@ const Pagamento = () => {
   const [nomeTitular, setNomeTitular] = useState("")
   const [validade, setValidade] = useState("")
   const [cvv, setCvv] = useState("")
+
+  const { carrinho } = useCart()
+
+  const totalProdutos = carrinho.reduce((soma, item) => soma + (item.precoPor * item.quantidade), 0)
+  const frete = 25.00
+  const totalGeral = totalProdutos + frete
 
   const podeFinalizarCompra = () => {
     if (formaPagamento === "cartao") {
@@ -132,25 +139,22 @@ const Pagamento = () => {
             <TituloResumo>Resumo da compra</TituloResumo>
             <LinhaResumo>
               <span>Produtos:</span>
-              <span>R$ 000,00</span>
+              <span>R$ {totalProdutos.toFixed(2)}</span>
             </LinhaResumo>
             <LinhaResumo>
               <span>Frete:</span>
-              <span>R$ 000,00</span>
+              <span>R$ {frete.toFixed(2)}</span>
             </LinhaResumo>
-            <LinhaResumo>
-              <span>Desconto:</span>
-              <span>R$ 000,00</span>
-            </LinhaResumo>
+
             <LinhaSeparadora />
             <LinhaResumo negrito>
               <span>Total:</span>
-              <span>R$ 0.000,00</span>
+              <span>R$ {totalGeral.toFixed(2)}</span>
             </LinhaResumo>
           </ResumoCompra>
         </Conteudo>
       </Container>
-      
+
       <Footer />
     </>
   )
