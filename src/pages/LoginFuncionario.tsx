@@ -19,7 +19,7 @@ const LoginFuncionario = () => {
           <Label htmlFor="senha">Senha</Label>
           <Input type="password" id="senha" placeholder="Senha*" />
 
-          <BotaoEntrar>ENTRAR</BotaoEntrar>
+          <BotaoEntrar href="/pagina-funcionario">ENTRAR</BotaoEntrar>
 
           <Separador>
             <Linha />
@@ -79,15 +79,17 @@ const Input = styled.input`
   font-size: 0.95rem;
 `
 
-const BotaoEntrar = styled.button`
+const BotaoEntrar = styled.a`
   margin-top: 1rem;
   background-color: #023e8a;
   color: white;
   padding: 0.75rem;
   border: none;
+  text-align: center;
   border-radius: 0.25rem;
   font-weight: bold;
   cursor: pointer;
+    text-decoration: none;
 
   &:hover {
     opacity: 0.9;
