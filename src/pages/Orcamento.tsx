@@ -1,4 +1,3 @@
-
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 import imgBanner from "@/assets/imgprincipalorcamento.png"
@@ -21,6 +20,7 @@ type OrcamentoProps = {
 const Contato = ({ setBusca, termoBusca }: OrcamentoProps) => {
   return (
     <>
+      
     <TopHeader />
     <MiddleHeader setBusca={setBusca} termoBusca={termoBusca} />
     <BottomHeader />
@@ -243,10 +243,12 @@ const BotaoEnviar = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 1rem;
 
   @media (max-width: 768px) {
     width: 80%;
-    margin: 0 auto;
+    margin: 1rem auto 0;
+    display: block;
   }
 `
 
