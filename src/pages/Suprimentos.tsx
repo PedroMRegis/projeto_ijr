@@ -10,14 +10,12 @@ import BottomHeader from '@/components/BottomHeader'
 import MiddleHeader from '@/components/MiddleHeader'
 import Footer from '@/components/Footer'
 
-
-
 type SuprimentosProps = {
   setBusca: (valor: string) => void;
   termoBusca: string;
 };
 
-const Suprimentos = ({setBusca, termoBusca}: SuprimentosProps) => {
+const Suprimentos = ({ setBusca, termoBusca }: SuprimentosProps) => {
   const { setFiltro, produtosFiltrados } = FiltroProduto(suprimentos)
   const [produtoSelecionado, setProdutoSelecionado] = useState<Produto | null>(null)
 
@@ -26,8 +24,9 @@ const Suprimentos = ({setBusca, termoBusca}: SuprimentosProps) => {
       <TopHeader />
       <MiddleHeader setBusca={setBusca} termoBusca={termoBusca} />
       <BottomHeader />
-      
-      <Section>
+
+      <Container>
+        <SectionTitulo>Suprimentos</SectionTitulo>
         <Filtros>
           <button onClick={() => setFiltro("todos")}>Todos</button>
           <button onClick={() => setFiltro("papel e blocos")}>Papel e blocos</button>
@@ -35,19 +34,16 @@ const Suprimentos = ({setBusca, termoBusca}: SuprimentosProps) => {
           <button onClick={() => setFiltro("outros")}>Outros</button>
         </Filtros>
 
-        <AreaProdutos>
-          <SectionTitulo>Suprimentos</SectionTitulo>
-          <GridProdutos>
-            {produtosFiltrados.map((produto, index) => (
-              <CardProduto
-                key={index}
-                produto={produto}
-                onDetalhes={(p) => setProdutoSelecionado(p)}
-              />
-            ))}
-          </GridProdutos>
-        </AreaProdutos>
-      </Section>
+        <GridProdutos>
+          {produtosFiltrados.map((produto, index) => (
+            <CardProduto
+              key={index}
+              produto={produto}
+              onDetalhes={(p) => setProdutoSelecionado(p)}
+            />
+          ))}
+        </GridProdutos>
+      </Container>
 
       {produtoSelecionado && (
         <ModalDetalhesProduto
@@ -58,87 +54,69 @@ const Suprimentos = ({setBusca, termoBusca}: SuprimentosProps) => {
 
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default Suprimentos;
+export default Suprimentos
 
-const Section = styled.section`
-  display: flex;
-  gap: 2rem;
+
+const Container = styled.section`
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 
   @media (max-width: 768px) {
-    flex-direction: column;
     padding: 1rem;
   }
-`;
+`
 
 const SectionTitulo = styled.h2`
-  font-size: 1.25rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  margin-bottom: 1rem;
   text-align: center;
-
-  @media (max-width: 768px) {
-    font-size: 1.1rem;
-  }
-`;
+`
 
 const Filtros = styled.div`
   display: flex;
-  flex-direction: column;
-  border-radius: 0.75rem;
-  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.5);
-  gap: 4rem;
-  max-height: 35rem;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 1rem;
   background-color: #f0f0f0;
   padding: 1rem;
-  margin-top: 3rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.5);
+  width: 100%;
 
   button {
     background: #023e8a;
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
     cursor: pointer;
-    font-size: 0.875rem;
+    font-size: 0.9rem;
+    flex: 1;
+    min-width: 150px;
+    max-width: 200px;
+    text-align: center;
 
     &:hover {
-      opacity: 0.9;
+      background: #002b5b;
     }
   }
-
-  @media (max-width: 768px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
-
-    button {
-      flex: 1 1 45%;
-      min-width: 120px;
-    }
-  }
-`;
-
-const AreaProdutos = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-`;
+`
 
 const GridProdutos = styled.div`
   display: grid;
-  padding: 2rem;
+  width: 100%;
+  padding: 2rem 0;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
 
   @media (max-width: 768px) {
-    padding: 1rem;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 1rem;
+    padding: 1rem 0;
   }
-`;
+`
