@@ -1,108 +1,110 @@
-import React from "react";
-import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import { Plus } from "@phosphor-icons/react";
-import MiddleHeaderFunc from "@/components/MiddleHeaderFunc";
+import styled from "styled-components"
+import { Link } from "react-router-dom"
+import lojaImg from "@/assets/imgloja.png"
+import BottomHeader from "@/components/BottomHeader";
+import MiddleHeader from "@/components/MiddleHeader";
+import TopHeader from "@/components/TopHeader";
+import Footer from "@/components/Footer";
 
-const UploadImagem = () => {
-  const navigate = useNavigate();
 
-  return (
-    <Container>
-      <MiddleHeaderFunc />
-
-      <Content>
-        <Titulo>Upload de Nova Imagem</Titulo>
-
-        <FormUpload>
-          <InputFile type="file" id="file" />
-
-          <BotaoUpload>
-            <Plus size={24} />
-            Escolher Imagem
-          </BotaoUpload>
-
-          <BotaoConfirmar onClick={() => navigate("/")}>
-            Confirmar Upload
-          </BotaoConfirmar>
-        </FormUpload>
-      </Content>
-    </Container>
-  );
+type NossaLojaProps = {
+  setBusca: (valor: string) => void;
+  termoBusca: string;
 };
 
-export default UploadImagem;
+const Nossaloja = ({ setBusca, termoBusca }: NossaLojaProps) => {
+  return (
+    <>
+      <TopHeader />
+      <MiddleHeader setBusca={setBusca} termoBusca={termoBusca} />
+      <BottomHeader />
+    <Wrapper>
+      <Main>
+        <Titulo>NOSSA LOJA</Titulo>
+        <Subtitulo>SÃO PAULO</Subtitulo>
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-`;
+        <Conteudo>
+          <Imagem src={lojaImg} alt="Fachada da loja R. Amaral Office" />
+          <BoxEndereco>
+            <h3><AzulEscuro>R AMARAL OFFICE</AzulEscuro> - <strong>São Paulo</strong></h3>
+            <p>R. Teodoro Sampaio - Pinheiros, São Paulo - SP, 04551-000</p>
+            <br />
+            <p><strong>Horário de atendimento:</strong></p>
+            <p>Segunda a Sábado - 10h às 22h</p>
+            <p>Domingo e Feriados - 10h às 18h</p>
+          </BoxEndereco>
+        </Conteudo>
+      </Main>
+    </Wrapper>
+    <Footer />
+    </>
+  )
+}
 
-const Content = styled.main`
-  flex: 1;
+export default Nossaloja
+
+const Wrapper = styled.div`
+  font-family: 'Poppins', sans-serif; /* Fonte moderna e bonita */
+  color: #000;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 20px;
-  gap: 30px;
-`;
+  justify-content: center;
+  padding: 2rem;
+`
+
+const Main = styled.main`
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+`
 
 const Titulo = styled.h1`
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 2rem;
   color: #023e8a;
-  text-align: center;
+  margin-bottom: 0.5rem;
+`
 
-  @media (max-width: 600px) {
-    font-size: 20px;
-  }
-`;
+const Subtitulo = styled.h2`
+  font-size: 1.125rem;
+  color: #333;
+  margin-bottom: 2rem;
+`
 
-const FormUpload = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  max-width: 400px;
-`;
-
-const InputFile = styled.input`
-  display: none;
-`;
-
-const BotaoUpload = styled.label.attrs({ htmlFor: "file" })`
-  background-color: #28a745;
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
+const Conteudo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  width: 90%;
+  gap: 2rem;
+  flex-wrap: wrap;
+`
+
+const Imagem = styled.img`
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+`
+
+const BoxEndereco = styled.div`
+  background-color: #f1f1f1;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  text-align: center; /* Centraliza o conteúdo dentro da caixa */
   max-width: 400px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5; /* Deixa a leitura mais confortável */
 
-  &:hover {
-    background-color: #218838;
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
   }
-`;
 
-const BotaoConfirmar = styled.button`
-  background-color: #023e8a;
-  color: white;
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 8px;
+  p {
+    margin: 0.5rem 0;
+  }
+`
+
+const AzulEscuro = styled.span`
+  color: #023e8a;
   font-weight: bold;
-  cursor: pointer;
-  width: 90%;
-  max-width: 400px;
-
-  &:hover {
-    background-color: #012f6b;
-  }
-`;
+`
