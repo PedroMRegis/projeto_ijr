@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import TopHeader from "@/components/TopHeader";
-import MiddleHeader from "@/components/MiddleHeader";
+import MiddleHeaderFunc from "@/components/MiddleHeaderFunc";
 import BottomHeader from "@/components/BottomHeader";
 import Footer from "@/components/Footer";
 import monitorImg from "@/assets/monitor_lg.png"; 
@@ -8,29 +8,24 @@ import monitorImg from "@/assets/monitor_lg.png";
 const EditarProduto = () => {
   return (
     <>
-      <TopHeader />
-      <MiddleHeader setBusca={() => {}} termoBusca="" />
-      <BottomHeader />
+      <MiddleHeaderFunc />
 
       <Container>
         <Titulo>Editar Produto</Titulo>
 
         <Formulario>
           <Linha>
-            <Input type="text" placeholder="Monitor LG 22" />
+            <Input type="text" placeholder="Nome" />
           </Linha>
           <Linha>
-            <Input type="number" placeholder="Preço atual: R$ 759,00" />
+            
             <Input type="number" placeholder="Insira o novo preço" />
           </Linha>
           <Linha>
-            <TextArea placeholder="Atual descrição do Produto: Monitor LG de 22 polegadas com resolução Full HD para imagens claras e detalhadas." />
+            <TextArea placeholder="Atualizar descrição do produto" />
           </Linha>
 
-          <ImagemAtualContainer>
-            <ImagemAtual src={monitorImg} alt="Imagem atual do produto" />
-            <LegendaImagem>Imagem atual do produto</LegendaImagem>
-          </ImagemAtualContainer>
+
 
           <Linha>
             <UploadLabel htmlFor="upload">Trocar Imagem</UploadLabel>
@@ -41,7 +36,6 @@ const EditarProduto = () => {
         </Formulario>
       </Container>
 
-      <Footer />
     </>
   );
 };
@@ -136,22 +130,4 @@ const BotaoSalvar = styled.button`
   }
 `;
 
-const ImagemAtualContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-`;
 
-const ImagemAtual = styled.img`
-  width: 200px;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
-`;
-
-const LegendaImagem = styled.span`
-  font-size: 0.9rem;
-  color: #555;
-`;
