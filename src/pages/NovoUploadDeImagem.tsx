@@ -1,17 +1,19 @@
-import React from "react";
-import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import { Plus } from "@phosphor-icons/react";
-import MiddleHeaderFunc from "@/components/MiddleHeaderFunc";
+import React from "react"
+import styled from "styled-components"
+import { useNavigate, Link } from "react-router-dom"
+import { Plus } from "@phosphor-icons/react"
+import MiddleHeaderFunc from "@/components/MiddleHeaderFunc"
 
 const UploadImagem = () => {
   const navigate = useNavigate();
 
   return (
     <Container>
-      <MiddleHeaderFunc />
+
 
       <Content>
+        <VoltarLink to="/pagina-funcionario">Voltar</VoltarLink> 
+
         <Titulo>Upload de Nova Imagem</Titulo>
 
         <FormUpload>
@@ -27,8 +29,8 @@ const UploadImagem = () => {
         </FormUpload>
       </Content>
     </Container>
-  );
-};
+  )
+}
 
 export default UploadImagem;
 
@@ -36,7 +38,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-`;
+`
 
 const Content = styled.main`
   flex: 1;
@@ -45,7 +47,19 @@ const Content = styled.main`
   align-items: center;
   padding: 40px 20px;
   gap: 30px;
-`;
+`
+
+const VoltarLink = styled(Link)`
+  color: #023e8a;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  align-self: flex-start;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`
 
 const Titulo = styled.h1`
   font-size: 24px;
@@ -56,7 +70,7 @@ const Titulo = styled.h1`
   @media (max-width: 600px) {
     font-size: 20px;
   }
-`;
+`
 
 const FormUpload = styled.form`
   display: flex;
@@ -65,11 +79,11 @@ const FormUpload = styled.form`
   gap: 20px;
   width: 100%;
   max-width: 400px;
-`;
+`
 
 const InputFile = styled.input`
   display: none;
-`;
+`
 
 const BotaoUpload = styled.label.attrs({ htmlFor: "file" })`
   background-color: #28a745;
@@ -85,7 +99,7 @@ const BotaoUpload = styled.label.attrs({ htmlFor: "file" })`
   &:hover {
     background-color: #218838;
   }
-`;
+`
 
 const BotaoConfirmar = styled.button`
   background-color: #023e8a;
@@ -100,4 +114,4 @@ const BotaoConfirmar = styled.button`
   &:hover {
     background-color: #012f6b;
   }
-`;
+`

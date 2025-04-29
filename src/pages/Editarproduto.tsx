@@ -1,16 +1,18 @@
-import styled from "styled-components";
-import TopHeader from "@/components/TopHeader";
-import MiddleHeaderFunc from "@/components/MiddleHeaderFunc";
-import BottomHeader from "@/components/BottomHeader";
-import Footer from "@/components/Footer";
-import monitorImg from "@/assets/monitor_lg.png"; 
+import styled from "styled-components"
+import { Link } from "react-router-dom"
+import TopHeader from "@/components/TopHeader"
+import MiddleHeaderFunc from "@/components/MiddleHeaderFunc"
+import BottomHeader from "@/components/BottomHeader"
+import Footer from "@/components/Footer"
 
 const EditarProduto = () => {
   return (
     <>
-      <MiddleHeaderFunc />
+
 
       <Container>
+        <VoltarLink to="/pagina-funcionario">Voltar</VoltarLink> 
+
         <Titulo>Editar Produto</Titulo>
 
         <Formulario>
@@ -18,15 +20,11 @@ const EditarProduto = () => {
             <Input type="text" placeholder="Nome" />
           </Linha>
           <Linha>
-            
             <Input type="number" placeholder="Insira o novo preço" />
           </Linha>
           <Linha>
             <TextArea placeholder="Atualizar descrição do produto" />
           </Linha>
-
-
-
           <Linha>
             <UploadLabel htmlFor="upload">Trocar Imagem</UploadLabel>
             <InputUpload id="upload" type="file" />
@@ -35,12 +33,11 @@ const EditarProduto = () => {
           <BotaoSalvar>Salvar Alterações</BotaoSalvar>
         </Formulario>
       </Container>
-
     </>
   );
 };
 
-export default EditarProduto;
+export default EditarProduto
 
 const Container = styled.div`
   padding: 2rem;
@@ -50,7 +47,20 @@ const Container = styled.div`
   @media (max-width: 768px) {
     padding: 1rem;
   }
-`;
+`
+
+const VoltarLink = styled(Link)`
+  color: #023e8a;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  display: inline-block;
+  font-size: 1rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`
 
 const Titulo = styled.h1`
   font-size: 2rem;
@@ -61,19 +71,19 @@ const Titulo = styled.h1`
   @media (max-width: 768px) {
     font-size: 1.5rem;
   }
-`;
+`
 
 const Formulario = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-`;
+`
 
 const Linha = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-`;
+`
 
 const Input = styled.input`
   flex: 1;
@@ -85,7 +95,7 @@ const Input = styled.input`
   @media (max-width: 768px) {
     min-width: 100%;
   }
-`;
+`
 
 const TextArea = styled.textarea`
   width: 100%;
@@ -94,7 +104,7 @@ const TextArea = styled.textarea`
   border-radius: 4px;
   resize: vertical;
   min-height: 150px;
-`;
+`
 
 const UploadLabel = styled.label`
   background-color: #023e8a;
@@ -103,11 +113,11 @@ const UploadLabel = styled.label`
   border-radius: 4px;
   cursor: pointer;
   text-align: center;
-`;
+`
 
 const InputUpload = styled.input`
   display: none;
-`;
+`
 
 const BotaoSalvar = styled.button`
   margin-top: 2rem;
@@ -128,6 +138,4 @@ const BotaoSalvar = styled.button`
     margin: 2rem auto 0;
     display: block;
   }
-`;
-
-
+`
