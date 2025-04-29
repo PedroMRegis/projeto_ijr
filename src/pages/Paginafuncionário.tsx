@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Plus, PencilSimple } from "@phosphor-icons/react";
 import { Input } from "@/components/ui/input";
@@ -36,6 +36,8 @@ const Pagina = () => {
     <Container>
       <MiddleHeaderFunc />
       <Content>
+        <TopSectionTitle>Editar Banner da Página Principal</TopSectionTitle>
+
         <FormSection>
           <Input type="text" placeholder="Inserir título da promoção" />
           <Textarea placeholder="Inserir descrição da promoção" />
@@ -43,11 +45,13 @@ const Pagina = () => {
             <Plus size={32} /> Novo upload de imagem
           </UploadButton>
         </FormSection>
+
         <BotaoEditar href = "/editar-produto">
           <Section title="Editar Eletrônicos" items={eletronicos} />
           <Section title="Editar Móveis" items={moveis} />
           <Section title="Editar Suprimentos" items={suprimentos} />
         </BotaoEditar>
+
         <EditInfo>
           Clique no ícone de lápis para editar as informações
         </EditInfo>
@@ -85,6 +89,7 @@ const Content = styled.main`
   align-items: center;
   padding: 40px 20px;
   gap: 30px;
+
   @media (max-width: 600px) {
     padding: 20px 10px;
     gap: 20px;
@@ -93,12 +98,25 @@ const Content = styled.main`
 const BotaoEditar = styled.a`
 `
 
+const TopSectionTitle = styled.h2`
+  font-size: 24px;
+  font-weight: bold;
+  color: #023e8a;
+  margin-bottom: -10px;
+  text-align: center;
+
+  @media (max-width: 600px) {
+    font-size: 20px;
+  }
+`;
+
 const FormSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
   width: 100%;
   max-width: 500px;
+
   @media (max-width: 600px) {
     max-width: 100%;
   }
@@ -123,6 +141,7 @@ const UploadButton = styled.button`
   border: none;
   border-radius: 8px;
   cursor: pointer;
+
   &:hover {
     background-color: #218838;
   }
@@ -132,6 +151,7 @@ const SectionTitle = styled.h2`
   font-size: 22px;
   color: #023e8a;
   margin-top: 20px;
+
   @media (max-width: 600px) {
     font-size: 20px;
   }
@@ -144,6 +164,7 @@ const ProductList = styled.div`
   flex-direction: column;
   gap: 12px;
   text-align: left;
+
   @media (max-width: 600px) {
     max-width: 100%;
   }
@@ -164,6 +185,7 @@ const EditInfo = styled.p`
   color: #555;
   margin-top: 20px;
   text-align: center;
+
   @media (max-width: 600px) {
     font-size: 14px;
   }
