@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Plus, PencilSimple } from "@phosphor-icons/react";
 import { Input } from "@/components/ui/input";
-import TopHeader from "@/components/TopHeader";
-import MiddleHeader from "@/components/MiddleHeader";
+import MiddleHeaderFunc from "@/components/MiddleHeaderFunc";
 
 const eletronicos = [
   "Monitor LG 22”",
@@ -33,12 +32,9 @@ const suprimentos = [
 ];
 
 const Pagina = () => {
-  const [busca, setBusca] = useState("");
-
   return (
     <Container>
-      <TopHeader />
-      <MiddleHeader setBusca={setBusca} termoBusca={busca} />
+      <MiddleHeaderFunc />
       <Content>
         <FormSection>
           <Input type="text" placeholder="Inserir título da promoção" />
