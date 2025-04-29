@@ -15,14 +15,9 @@ const ModalDetalhesProduto = ({ produto, onClose }: ModalDetalhesProdutoProps) =
 
   const { adicionarAoCarrinho } = useCart();
 
-  const aumentarQuantidade = () => {
-    setQuantidade((qtd) => qtd + 1);
-  };
-
+  const aumentarQuantidade = () => setQuantidade((qtd) => qtd + 1);
   const diminuirQuantidade = () => {
-    if (quantidade > 1) {
-      setQuantidade((qtd) => qtd - 1);
-    }
+    if (quantidade > 1) setQuantidade((qtd) => qtd - 1);
   };
 
   const handleAdicionarProduto = () => {
@@ -40,15 +35,12 @@ const ModalDetalhesProduto = ({ produto, onClose }: ModalDetalhesProdutoProps) =
 
         <Conteudo>
           <Imagem src={produto.imagem} alt={produto.nome} />
-
           <Info>
             <Nome>{produto.nome}</Nome>
-
             <Precos>
-              {produto.precoDe && <PrecoDe>R$ {produto.precoDe}</PrecoDe>}
-              <PrecoPor>R$ {produto.precoPor}</PrecoPor>
+              {produto.precoDe && <PrecoDe>R$ {produto.precoDe.toFixed(2)}</PrecoDe>}
+              <PrecoPor>R$ {produto.precoPor.toFixed(2)}</PrecoPor>
             </Precos>
-
             <Descricao>{produto.descricao}</Descricao>
 
             <Contador>
@@ -68,9 +60,7 @@ const ModalDetalhesProduto = ({ produto, onClose }: ModalDetalhesProdutoProps) =
         </Conteudo>
 
         {mensagemVisivel && (
-          <MensagemAdicionado>
-            Produto adicionado ao carrinho!
-          </MensagemAdicionado>
+          <MensagemAdicionado>Produto adicionado ao carrinho!</MensagemAdicionado>
         )}
       </ModalContainer>
     </Overlay>
