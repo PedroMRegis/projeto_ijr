@@ -21,7 +21,7 @@ const UploadImagem = () => {
             Escolher Imagem
           </BotaoUpload>
 
-          <BotaoConfirmar onClick={() => navigate("/")}>
+          <BotaoConfirmar>
             Confirmar Upload
           </BotaoConfirmar>
         </FormUpload>
