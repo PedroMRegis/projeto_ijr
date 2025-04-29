@@ -43,9 +43,11 @@ const Pagina = () => {
             <Plus size={32} /> Novo upload de imagem
           </UploadButton>
         </FormSection>
-        <Section title="Editar Eletrônicos" items={eletronicos} />
-        <Section title="Editar Móveis" items={moveis} />
-        <Section title="Editar Suprimentos" items={suprimentos} />
+        <BotaoEditar href = "/editar-produto">
+          <Section title="Editar Eletrônicos" items={eletronicos} />
+          <Section title="Editar Móveis" items={moveis} />
+          <Section title="Editar Suprimentos" items={suprimentos} />
+        </BotaoEditar>
         <EditInfo>
           Clique no ícone de lápis para editar as informações
         </EditInfo>
@@ -88,6 +90,8 @@ const Content = styled.main`
     gap: 20px;
   }
 `;
+const BotaoEditar = styled.a`
+`
 
 const FormSection = styled.div`
   display: flex;
