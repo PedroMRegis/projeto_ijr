@@ -16,6 +16,7 @@ import Pagamento from "@/pages/Carrinho/Pagamento"
 import PedidoAcompanhamento from "@/pages/Carrinho/PedidoAcompanhamento"
 import PaginaFuncionario from "@/pages/Paginafuncionário"
 import EditarProduto from "@/pages/Editarproduto"
+import NovoUploadDeImagem from "@/pages/NovoUploadDeImagem"
 
 type AppRoutesProps = {
   setBusca: (valor: string) => void;
@@ -42,6 +43,7 @@ const AppRoutes = ({ setBusca, termoBusca }: AppRoutesProps) => {
       <Route path="/pedido-acompanhamento" element={<PedidoAcompanhamento />} />
       <Route path="/pagina-funcionario" element={<PaginaFuncionario />} />
       <Route path="/editar-produto" element={<EditarProduto />} />
+      <Route path="/upload-imagem" element={<NovoUploadDeImagem />} />
       
     </Routes>
   );

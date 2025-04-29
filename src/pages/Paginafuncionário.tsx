@@ -41,7 +41,7 @@ const Pagina = () => {
         <FormSection>
           <Input type="text" placeholder="Inserir título da promoção" />
           <Textarea placeholder="Inserir descrição da promoção" />
-          <UploadButton>
+          <UploadButton href="/upload-imagem">
             <Plus size={32} /> Novo upload de imagem
           </UploadButton>
         </FormSection>
@@ -129,7 +129,7 @@ const Textarea = styled.textarea`
   resize: vertical;
 `;
 
-const UploadButton = styled.button`
+const UploadButton = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
