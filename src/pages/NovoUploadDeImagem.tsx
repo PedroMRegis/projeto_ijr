@@ -16,7 +16,6 @@ const UploadImagem = () => {
 
         <FormUpload>
           <InputFile type="file" id="file" />
-
           <BotaoUpload>
             <Plus size={24} />
             Escolher Imagem
@@ -81,10 +80,7 @@ const BotaoUpload = styled.label.attrs({ htmlFor: "file" })`
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 10px;
-  width: 90%;
-  max-width: 400px;
 
   &:hover {
     background-color: #218838;
@@ -99,8 +95,7 @@ const BotaoConfirmar = styled.button`
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
-  width: 90%;
-  max-width: 400px;
+  width: 100%;
 
   &:hover {
     background-color: #012f6b;
