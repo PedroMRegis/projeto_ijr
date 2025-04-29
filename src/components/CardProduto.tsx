@@ -12,8 +12,8 @@ const CardProduto = ({ produto, onDetalhes }: CardProdutoProps) => {
       <Imagem src={produto.imagem} alt={produto.nome} />
       <Titulo>{produto.nome}</Titulo>
 
-      {produto.precoDe && <PrecoAntigo>De: R$ {produto.precoDe}</PrecoAntigo>}
-      <PrecoNovo>Por: R$ {produto.precoPor} à vista</PrecoNovo>
+      {produto.precoDe && <PrecoAntigo>De: R$ {produto.precoDe.toFixed(2)}</PrecoAntigo>}
+      <PrecoNovo>Por: R$ {produto.precoPor.toFixed(2)} à vista</PrecoNovo>
 
       <Botao onClick={() => onDetalhes(produto)}>Mais Detalhes</Botao>
     </Card>
@@ -21,7 +21,6 @@ const CardProduto = ({ produto, onDetalhes }: CardProdutoProps) => {
 }
 
 export default CardProduto
-
 
 const Card = styled.div`
   background: #fff;
