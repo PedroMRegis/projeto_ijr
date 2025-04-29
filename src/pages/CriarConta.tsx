@@ -26,7 +26,7 @@ const CriarConta = () => {
         <Label htmlFor="confirmarSenha">Confirmar Senha</Label>
         <Input type="password" id="confirmarSenha" placeholder="Confirmar senha*" />
 
-        <BotaoCriarConta>CRIAR CONTA</BotaoCriarConta>
+        <BotaoCriarConta href="/">CRIAR CONTA</BotaoCriarConta>
 
         <Separador>
           <Linha />
@@ -87,7 +87,7 @@ const Input = styled.input`
   font-size: 0.95rem;
 `
 
-const BotaoCriarConta = styled.button`
+const BotaoCriarConta = styled.a`
   margin-top: 1rem;
   background-color: #023e8a;
   color: white;
@@ -95,7 +95,9 @@ const BotaoCriarConta = styled.button`
   border: none;
   border-radius: 0.25rem;
   font-weight: bold;
+  text-align: center;
   cursor: pointer;
+  text-decoration: none;
 
   &:hover {
     opacity: 0.9;
