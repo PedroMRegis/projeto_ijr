@@ -9,8 +9,8 @@ export const footer = () => {
       <FooterContent>
         <p>© 2025 R. Amaral Office. Todos os direitos reservados.</p>
         <FooterLinks>
-          <a href="#">Política de Privacidade</a>
-          <a href="#">Termos de Uso</a>
+          <p>Política de Privacidade</p>
+          <p>Termos de Uso</p>
         </FooterLinks>
       </FooterContent>
     </Footer>
@@ -38,10 +38,5 @@ const FooterLinks = styled.div`
   justify-content: center;
   gap: 2rem;
 
-  a {
-    color: white;
-    text-decoration: underline;
-    font-size: 0.9rem;
-  }
 `;
 

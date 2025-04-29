@@ -61,7 +61,9 @@ const Busca = ({ setBusca, termoBusca }: BuscaProps) => {
 export default Busca;
 
 const Container = styled.div`
+  text-align: center;
   padding: 2rem;
+  min-height: 60vh;
 `;
 
 const Titulo = styled.h2`
@@ -78,7 +80,7 @@ const GridProdutos = styled.div`
 `;
 
 const MensagemNenhumProduto = styled.p`
-  text-align: center;
+  grid-column: 1/-1;
   font-size: 1rem;
   color: #555;
   `
